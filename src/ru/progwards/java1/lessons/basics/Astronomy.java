@@ -14,23 +14,22 @@ public class Astronomy{
         System.out.println("отношение площади поверхности Земли к площади поверхности Меркурия => " + earthVsMercury());
         System.out.println("отношение площади поверхности Земли к площади поверхности Юпитера => " + earthVsJupiter());
     }
-    public static Double sphereSquare(Double r){ //площадь поверхности сферы радиуса r
+    public static double sphereSquare(Double r){ //площадь поверхности сферы радиуса r
         return 4*PI*r*r;
     }
-    public static Double earthSquare(){ // площадь поверхности Земли
+    public static double earthSquare(){ // площадь поверхности Земли
         return sphereSquare(R_EARTH);
     }
-    public static Double mercurySquare(){ // площадь поверхности Меркурия
+    public static double mercurySquare(){ // площадь поверхности Меркурия
         return sphereSquare(R_MERCURY);
     }
-    public static Double jupiterSquare(){ // площадь поверхности Юпитера
+    public static double jupiterSquare(){ // площадь поверхности Юпитера
         return sphereSquare(R_JUPITER);
     }
-    public static Double earthVsMercury(){ //отношение площади поверхности Земли к площади поверхности Меркурия
+    public static double earthVsMercury(){ //отношение площади поверхности Земли к площади поверхности Меркурия
         return earthSquare()/mercurySquare();
     }
-    public static Double earthVsJupiter(){ //отношение площади поверхности Земли к площади поверхности Юпритера
+    public static double earthVsJupiter(){ //отношение площади поверхности Земли к площади поверхности Юпритера
         return earthSquare()/jupiterSquare();
     }
-
 }

@@ -5,7 +5,6 @@ public class AccuracyDoubleFloat{
     public static final double R_EARTH= 6_371.2;
     public static void main(String[] args){ //разницу между значениями объёмов Земли вычисленных на основании типов double и float в кубических километрах
         System.out.println("Разницу между значениями объёмов Земли вычисленных на основании типов double и float: " + calculateAccuracy(R_EARTH) + " куб. км.");
-
     }
     public static double volumeBallDouble(double radius){ //объём Земли вычисленных на основании типа double в кубических километрах
         double doub1=4;
