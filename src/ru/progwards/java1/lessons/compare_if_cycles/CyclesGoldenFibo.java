@@ -49,7 +49,10 @@ public class CyclesGoldenFibo {
         }
         return result;
     }
-    public static int fiboNumber(int n){ //возвращать n-ое число Фибоначчи (нумерация начинается с 1, то есть при n = 3 должно вернуться число Фибоначчи 2, а при n = 10 число 55)
+/*
+возвращать n-ое число Фибоначчи (нумерация начинается с 1, то есть при n = 3 должно вернуться число Фибоначчи 2, а при n = 10 число 55)
+ */
+    public static int fiboNumber(int n){
         int fibo=0;
         int sumTwoPastDigit=0;
         int onePastDigit=0;
@@ -94,7 +97,7 @@ public class CyclesGoldenFibo {
             }
         }
         boolean x =false;
-        if (chekGold>=1.61703 & chekGold<=1.61903) x=true;
+        if (chekGold>=1.61703d & chekGold<=1.61903d) x=true; // проверка что золотой
         return x;
     }
 }
