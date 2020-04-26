@@ -3,12 +3,12 @@ package ru.progwards.java1.lessons.compare_if_cycles;
 public class CyclesGoldenFibo {
     public static void main(String[] args){
         for (int i=1;i<16;i++) {
-            System.out.println(+fiboNumber(i));
+            System.out.println(fiboNumber(i));
         }
         for (int t1=1; t1<101; t1++){
             for (int t2=1; t2<101; t2++){
                 for (int t3=1; t3<101; t3++){
-                    if (isGoldenTriangle(t1,t2,t3)) System.out.println("треугольник со сторонами " + t1 + " " + t2 + " " + t3 + " золотой" +isGoldenTriangle(t1,t2,t3));
+                    if (isGoldenTriangle(t1,t2,t3)) System.out.println("треугольник со сторонами " + t1 + " " + t2 + " " + t3 + " золотой: " +isGoldenTriangle(t1,t2,t3));
                 }
             }
         }
@@ -82,17 +82,14 @@ public class CyclesGoldenFibo {
 */
     public static boolean isGoldenTriangle(int a, int b, int c){
         double chekGold =0;
-        double aDoub=a;
-        double bDoub=b;
-        double cDoub=c;
+        double aDoub=(double)a;
+        double bDoub=(double)b;
+        double cDoub=(double)c;
         if (((a + b) > c) & ((a + c) > b) & ((c + b) > a)) {// проверка что треугольник
             if  (a==b || a==c || b==c) { // проверка что равнобедренный
-                if (a>b) chekGold=aDoub/bDoub;
-                if (b>a) chekGold=bDoub/aDoub;
-                if (a>c) chekGold=aDoub/cDoub;
-                if (c>a) chekGold=cDoub/aDoub;
-                if (b>c) chekGold=bDoub/cDoub;
-                if (c>b) chekGold=cDoub/bDoub;
+                if (a==b & a>c) chekGold=aDoub/cDoub;
+                if (a==c & a>b) chekGold=aDoub/bDoub;
+                if (b==c & b>a) chekGold=bDoub/aDoub;
                 //System.out.println(chekGold);
             }
         }

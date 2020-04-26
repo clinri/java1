@@ -9,7 +9,7 @@ public class Т43 {
         long x = 1;
         if (n==0) return 1;
         for (long i=1; i<=n; i++){
-            x=x*i;
+            x*=i;
         }
         return x;
     }
