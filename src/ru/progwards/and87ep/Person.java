@@ -21,7 +21,10 @@ public class Person {
         return this.age;
     }
     public String getCountry(){
-        Person personObj1=new Person();
-        return personObj1.country;
+        return new Person().country;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Person("name1",23).age);
     }
 }
