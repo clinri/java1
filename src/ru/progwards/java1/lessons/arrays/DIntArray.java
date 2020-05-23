@@ -19,7 +19,7 @@ import java.util.Arrays;
 //3.5 метод
 //public int at(int pos) - возвращает элемент по индексу pos.
 public class DIntArray {
-    private int[] Array1 = {1, 2, 3};
+    private int[] Array1 = {};
 
     public DIntArray() {
     }
@@ -58,7 +58,7 @@ public class DIntArray {
                 System.out.println(Arrays.toString(func.Array1));
                 func.atDelete(2);
                 System.out.println(Arrays.toString(func.Array1));
-                System.out.println(func.at(4));
+                System.out.println(func.at(1));
             }
 
         }
