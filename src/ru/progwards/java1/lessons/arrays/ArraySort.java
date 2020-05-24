@@ -14,17 +14,29 @@ import java.util.Arrays;
 //8. Обобщая, алгоритм звучит следующим образом - сделать 2 вложенных цикла,
 // внешний по i и внутренний по j. Внутренний цикл начинается от i+1, и если a[i] > a[j], то нужно поменять элементы a[i] и a[j] местами.
 public class ArraySort {
-    public static void sort(int[] a){
-        int ai=0;
-        int aj=0;
+//    public static void sort(int[] a){
+//        int ai=0;
+//        int aj=0;
+//        for (int i=0; i<a.length; i++){
+//            for (int j=0; j<a.length; j++){
+//                if (i==j) continue;
+//                ai=a[i];
+//                aj=a[j];
+//                if (a[i] < a[j]) {
+//                    a[i]=aj;
+//                    a[j]=ai;
+//                }
+//            }
+//        }
+//
+    public static void sort(int[] a){ // версия по алгоритму из задания, когда местами меняются элементы если a[i] > a[j]
+        int memory;
         for (int i=0; i<a.length; i++){
-            for (int j=0; j<a.length; j++){
-                if (i==j) continue;
-                ai=a[i];
-                aj=a[j];
-                if (a[i] < a[j]) {
-                    a[i]=aj;
-                    a[j]=ai;
+            for (int j=i+1; j<a.length; j++) {
+                if (a[i]>a[j]){
+                    memory=a[i];
+                    a[i]=a[j];
+                    a[j]=memory;
                 }
             }
         }
