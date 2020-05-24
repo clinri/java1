@@ -25,7 +25,7 @@ public class Binary {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Binary((byte) 10000001).toString());
+        System.out.println(new Binary((byte) 0b10000001).toString());
     }
 
 }
