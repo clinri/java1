@@ -13,7 +13,7 @@ public class SumBits {
         //System.out.println(Integer.toBinaryString(intVal));
         while (intVal != 0) {
             //System.out.println(Integer.toBinaryString(intVal));
-            sum += intVal & 0b00000000_00000000_00000000_00000001;
+            sum += intVal & 1;
             //System.out.println(sum);
             intVal >>>= 1;
         }
