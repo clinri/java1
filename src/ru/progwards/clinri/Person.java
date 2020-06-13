@@ -1,4 +1,4 @@
-package ru.progwards.and87ep;
+package ru.progwards.clinri;
 
 public class Person {
     private String name;

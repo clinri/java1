@@ -1,8 +1,9 @@
-package ru.progwards.java1.lessons.classes;
+package ru.progwards.java1.lessons.interfaces;
+
 //Реализовать класс Duck, потомок класса Animal, переопределяющий методы:
 //1.8 public AnimalKind getKind(), который возвращает DUCK.
 //1.9 public FoodKind getFoodKind(), который возвращает CORN
-public class Duck extends Animal{
+public class Duck extends Animal {
     public Duck(double weight){
         super(weight);
     }

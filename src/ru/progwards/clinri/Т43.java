@@ -1,4 +1,4 @@
-package ru.progwards.and87ep;
+package ru.progwards.clinri;
 
 public class Т43 {
     public static void main(String[] args) {

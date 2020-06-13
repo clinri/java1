@@ -1,4 +1,4 @@
-package ru.progwards.and87ep;
+package ru.progwards.clinri;
 
 public class Т23 {
     byte b1=123;

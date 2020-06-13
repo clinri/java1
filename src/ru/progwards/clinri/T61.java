@@ -1,4 +1,4 @@
-package ru.progwards.and87ep;
+package ru.progwards.clinri;
 
 public class T61 {
     //Напишите функцию, суммирующие значения элементов одномерного массива, содержащего целые числа. Сигнатура:

@@ -1,4 +1,4 @@
-package ru.progwards.and87ep;
+package ru.progwards.clinri;
 
 // Создайте классы Point2D, Point3D, в одном окошке, последовательно один, за другим
 //
