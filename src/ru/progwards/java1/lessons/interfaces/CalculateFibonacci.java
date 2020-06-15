@@ -2,15 +2,17 @@ package ru.progwards.java1.lessons.interfaces;
 //Задача 2. Класс CalculateFibonacci
 //Задача на динамическое программирование. Это когда некоторые результаты сохраняются для последующего использования.
 //Для функции public static int fiboNumber(int n) из задачи 3 урока 4 сделать сохранение одного, последнего
-// из рассчитанных значений. Для этого
-//
-//2.1 Разместить в классе CalculateFibonacci функцию
-//public static int fiboNumber(int n)
-//
-//2.2 Разместить вложенный класс
-//public static class CacheInfo, содержащий пару свойств
-//public int n - число, для которого рассчитываем Фибоначчи
-//public int fibo - результат расчета
+// из рассчитанных значений. Для этого:
+/*
+2.1 Разместить в классе CalculateFibonacci функцию
+public static int fiboNumber(int n)
+*/
+/*
+2.2 Разместить вложенный класс
+public static class CacheInfo, содержащий пару свойств:
+    public int n - число, для которого рассчитываем Фибоначчи
+    public int fibo - результат расчета
+*/
 //2.3 Разместить в классе CalculateFibonacci приватную статическую переменную CacheInfo lastFibo;
 //
 //2.4 В статической функции fiboNumber, проверять параметр n на совпадение с последним рассчитанным значением,
@@ -22,13 +24,14 @@ package ru.progwards.java1.lessons.interfaces;
 //2.6 Реализовать метод public static void clearLastFibo(), который сбрасывает lastFibo в null
 
 public class CalculateFibonacci {
-    static CacheInfo lastFibo = new CacheInfo();
+    private static CacheInfo lastFibo = new CacheInfo();
 
     //2.4 В статической функции fiboNumber, проверять параметр n на совпадение с последним рассчитанным значением,
     // и если совпадает - возвращать уже готовый результат. Если не совпадает - рассчитывать и сохранять
     // в статической переменной lastFibo.
     public static int fiboNumber(int n){
-        lastFibo.n=n;
+        if (lastFibo.n == n) return lastFibo.fibo;
+        lastFibo.n = n;
         int calcFibo=0;
         int sumTwoPastDigit=0;
         int onePastDigit=0;
@@ -48,9 +51,9 @@ public class CalculateFibonacci {
                 twoPastDigit=onePastDigit;
                 onePastDigit=calcFibo;
             }
-            if (i != n) lastFibo.fibo=calcFibo;
 //            System.out.println(", а " + i + "-е число фибо = " + fibo); // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
         }
+        lastFibo.fibo=calcFibo;
         return calcFibo;
     }
     //2.5 Реализовать метод public static CacheInfo getLastFibo() который возвращает lastFibo
@@ -66,4 +69,6 @@ public class CalculateFibonacci {
         public int n;
         public int fibo;
     }
+
+
 }

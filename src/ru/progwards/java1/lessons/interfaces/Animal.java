@@ -135,12 +135,11 @@ public class Animal implements FoodCompare, CompareWeight {
         }
     }
 
-    CompareWeight[] a;
-
     public static void main(String[] args){
         System.out.println(new Hamster(12).toString());
-        Duck duck1 = new Duck(1400);
+        Duck duck1 = new Duck(1700);
         Hamster hum1=new Hamster(1500);
+        Cow cow1=new Cow(2400);
         Object obj1=new Object();
         System.out.println("равны ли животные? "+duck1.equals(hum1));
         System.out.println(hum1.getFood1kgPrice());
@@ -154,15 +153,15 @@ public class Animal implements FoodCompare, CompareWeight {
         System.out.println(duck1.calculateFoodWeight());
         System.out.println(hum1.calculateFoodWeight());
         System.out.println(hum1.compareWeight(duck1));
-        Food fod1 = new Food(130);
-        Food fod2 = new Food(120);
+        Food fod1 = new Food(120);
+        Food fod2 = new Food(130);
         System.out.println(fod1.getWeight());
         System.out.println(fod2.getWeight());
         System.out.println(fod1.compareWeight(fod2));
-        CompareWeight[] arr = {duck1,hum1};
-        //sort(arr);
+        CompareWeight[] arr = {cow1,duck1,hum1};
+        CompareWeight.sort(arr);
         for (var value:arr){
-            System.out.println("Элемент" + value);
+            System.out.println("Элемент " + ((Animal)value).weight + " " + ((Animal)value).getKind());
         }
 
     }
