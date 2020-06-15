@@ -1,6 +1,5 @@
 package ru.progwards.java1.SeaBattle.clinri;
         import ru.progwards.java1.SeaBattle.SeaBattle;
-        import ru.progwards.java1.SeaBattle.SeaBattle.FireResult;
 
 public class SeaBattleAlg {
     // Тестовое поле создаётся конструктором

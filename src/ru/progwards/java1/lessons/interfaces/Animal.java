@@ -163,8 +163,6 @@ public class Animal implements FoodCompare, CompareWeight {
         //sort(arr);
         for (var value:arr){
             System.out.println("Элемент" + value);
-
-
         }
 
     }

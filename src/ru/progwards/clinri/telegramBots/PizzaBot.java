@@ -5,7 +5,7 @@ import org.telegram.telegrambots.ApiContextInitializer;
 import ru.progwards.java1.testlesson.ProgwardsTelegramBot;
 
 public class PizzaBot extends ProgwardsTelegramBot {
-    private final String menu = "У нас есть пицца, напитки и десерт";
+    private final String menu = "У нас есть пицца, напитки и десерты";
 
     @Override
     public String processMessage(String text) {
