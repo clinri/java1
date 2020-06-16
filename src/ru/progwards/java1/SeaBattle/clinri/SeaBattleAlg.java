@@ -31,9 +31,14 @@ public class SeaBattleAlg {
     public void battleAlgorithm(SeaBattle seaBattle) {
         // пример алгоритма:
         // стрельба по всем квадратам поля полным перебором
+        int hits = 0;
         for (int y = 0; y < seaBattle.getSizeX(); y++) {
             for (int x = 0; x < seaBattle.getSizeY(); x++) {
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
+                if (fireResult != SeaBattle.FireResult.MISS)
+                    hits++;
+                if (hits >=20)
+                    return;
             }
         }
     }
