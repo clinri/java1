@@ -61,6 +61,8 @@ public class SeaBattleAlg {
                 SeaBattle.FireResult fireResult = seaBattle.fire(x, y);
                 if (sizeBigShipHor!=0 & fireResult == FireResult.HIT) {
                     sizeBigShipHor++;
+                    hits++;
+                    field[y][x]='X';
                     continue;
                 }
                 if (sizeBigShipHor!=0 & fireResult == FireResult.DESTROYED){
@@ -122,7 +124,7 @@ public class SeaBattleAlg {
     // функция для отладки
     public static void main(String[] args) {
         System.out.println("Sea battle");
-        SeaBattle seaBattle = new SeaBattle(true);
+        SeaBattle seaBattle = new SeaBattle();
         new SeaBattleAlg().battleAlgorithm(seaBattle);
         System.out.println(seaBattle.getResult());
 
