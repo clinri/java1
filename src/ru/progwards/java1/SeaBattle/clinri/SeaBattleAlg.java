@@ -76,8 +76,14 @@ public class SeaBattleAlg {
                                 field[y + 1][k] = '.';
                             }
                         } else {
-                            for (int k=x+1-destroyedSizeShipHor; k <= x+1; k++) {
-                                field[y + 1][k] = '.';
+                            if (x+1-destroyedSizeShipHor == 0) {
+                                for (int k = x + 1 - destroyedSizeShipHor; k <= x + 1; k++) {
+                                    field[y + 1][k] = '.';
+                                }
+                            } else {
+                                for (int k = x  - destroyedSizeShipHor; k <= x + 1; k++) {
+                                    field[y + 1][k] = '.';
+                                }
                             }
                         }
                     }
