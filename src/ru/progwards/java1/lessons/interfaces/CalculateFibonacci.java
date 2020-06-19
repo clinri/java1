@@ -29,57 +29,60 @@ public class CalculateFibonacci {
     //2.4 В статической функции fiboNumber, проверять параметр n на совпадение с последним рассчитанным значением,
     // и если совпадает - возвращать уже готовый результат. Если не совпадает - рассчитывать и сохранять
     // в статической переменной lastFibo.
-    public static int fiboNumber(int n){
+    public static int fiboNumber(int n) {
+        if (lastFibo == null){
+            lastFibo = new CacheInfo();
+        }
         if (lastFibo.n == n) return lastFibo.fibo;
         lastFibo.n = n;
-        int calcFibo=0;
-        int sumTwoPastDigit=0;
-        int onePastDigit=0;
-        int twoPastDigit=0;
-        for (int i=1; i<=n;i++){
-            if (i==1){
+        int calcFibo = 0;
+        int sumTwoPastDigit = 0;
+        int onePastDigit = 0;
+        int twoPastDigit = 0;
+        for (int i = 1; i <= n; i++) {
+            if (i == 1) {
                 calcFibo = 1;
-                twoPastDigit=1;
+                twoPastDigit = 1;
             }
-            if (i==2){
+            if (i == 2) {
                 calcFibo = 1;
-                onePastDigit=1;
+                onePastDigit = 1;
             }
-            if (i>2){
+            if (i > 2) {
 //                System.out.print("предыдущие 2 числа " + twoPastDigit + " " + onePastDigit);
-                calcFibo=onePastDigit+twoPastDigit;
-                twoPastDigit=onePastDigit;
-                onePastDigit=calcFibo;
+                calcFibo = onePastDigit + twoPastDigit;
+                twoPastDigit = onePastDigit;
+                onePastDigit = calcFibo;
             }
 //            System.out.println(", а " + i + "-е число фибо = " + fibo); // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
         }
-        lastFibo.fibo=calcFibo;
+        lastFibo.fibo = calcFibo;
         return calcFibo;
     }
+
     //2.5 Реализовать метод public static CacheInfo getLastFibo() который возвращает lastFibo
-    public static CacheInfo getLastFibo(){
+    public static CacheInfo getLastFibo() {
         return lastFibo;
     }
 
-    public static void clearLastFibo(){
-        lastFibo=null;
+    public static void clearLastFibo() {
+        lastFibo = null;
     }
 
-    public static class CacheInfo{
+    public static class CacheInfo {
         public int n;
         public int fibo;
     }
 
     public static void main(String[] args) {
 
-        System.out.println(lastFibo.n +" " + lastFibo.fibo);
+        System.out.println(lastFibo.n + " " + lastFibo.fibo);
         System.out.println(fiboNumber(7));
-        System.out.println(lastFibo.n +" " + lastFibo.fibo);
+        System.out.println(lastFibo.n + " " + lastFibo.fibo);
         clearLastFibo();
         fiboNumber(29);
+        System.out.println(lastFibo.n + " " + lastFibo.fibo);
         //System.out.println(lastFibo.n +" " + lastFibo.fibo);
-
-
 
 
     }
