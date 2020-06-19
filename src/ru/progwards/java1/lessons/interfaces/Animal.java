@@ -159,7 +159,8 @@ public class Animal implements FoodCompare, CompareWeight {
         System.out.println(fod2.getWeight());
         System.out.println(fod1.compareWeight(fod2));
         CompareWeight[] arr = {cow1,duck1,hum1};
-        CompareWeight.sort(arr);
+        ArraySort.sort(arr);
+
         for (var value:arr){
             System.out.println("Элемент " + ((Animal)value).weight + " " + ((Animal)value).getKind());
         }
