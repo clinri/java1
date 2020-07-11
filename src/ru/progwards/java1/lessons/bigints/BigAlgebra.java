@@ -1,7 +1,5 @@
 package ru.progwards.java1.lessons.bigints;
 
-import com.google.inject.internal.cglib.core.$VisibilityPredicate;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
