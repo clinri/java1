@@ -13,7 +13,7 @@ public class ArrayInteger {
     void fromInt(BigInteger value) {
         BigInteger valueTest = value;
         int nRazr = 0;
-        while (valueTest.remainder(BigInteger.TEN).compareTo(BigInteger.ZERO) > 0) { // определение количества разрядов
+        while (valueTest.divide(BigInteger.TEN).compareTo(BigInteger.ZERO) > 0) { // определение количества разрядов
             valueTest = valueTest.divide(BigInteger.TEN);
             nRazr++;
             System.out.println(nRazr + " " + valueTest);
@@ -49,7 +49,7 @@ public class ArrayInteger {
 
         int nRazr = 0;
         int sumIntTest = sumInt;
-        while (sumIntTest % 10 > 0) { // определение количества разрядов
+        while (sumIntTest / 10 > 0) { // определение количества разрядов
             sumIntTest = sumIntTest / 10;
             nRazr++;
             System.out.println(nRazr + " " + sumIntTest);
@@ -69,8 +69,8 @@ public class ArrayInteger {
     }
 
     public static void main(String[] args) {
-        ArrayInteger arrI1 = new ArrayInteger(3);
-        arrI1.fromInt(new BigInteger("451"));
+        ArrayInteger arrI1 = new ArrayInteger(14);
+        arrI1.fromInt(new BigInteger("25937424601"));
         System.out.println(Arrays.toString(arrI1.digits));
         System.out.println(arrI1.toInt());
 
