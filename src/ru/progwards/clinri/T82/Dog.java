@@ -8,6 +8,7 @@ public class Dog implements Eating, Speaking {
         return "Мясо";
     }
 
+    @Override
     public String say() {
         return "Гав";
     }

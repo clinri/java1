@@ -8,6 +8,7 @@ public class Goat implements Eating, Speaking {
         return "Сено";
     }
 
+    @Override
     public String say() {
         return "Мее";
     }
