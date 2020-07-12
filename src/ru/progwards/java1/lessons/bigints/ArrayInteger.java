@@ -38,47 +38,72 @@ public class ArrayInteger {
         return result;
     }
 
+//    boolean add(ArrayInteger num) {
+//        int number1 = this.toInt().intValue();
+//        int number2 = 0;
+//        int myltyply = 1;
+//        for (int i = 0; i < num.digits.length; i++) {
+//            number2 = number2 + myltyply * num.digits[i];
+//            myltyply *= 10;
+//        }
+//        System.out.println("второе число = " + number2);
+//        int sumInt = number1 + number2;
+//
+//        int nRazr = 1;
+//        int sumIntTest = sumInt;
+//        while (sumIntTest / 10 > 0) { // определение количества разрядов
+//            sumIntTest = sumIntTest / 10;
+//            nRazr++;
+//            System.out.println(nRazr + " " + sumIntTest);
+//        }
+//        if (nRazr > digits.length) {
+//            Arrays.fill(digits, (byte) 0);
+//            return false;
+//        } else {
+//            for (int i = 0; i < nRazr; i++) {
+//                digits[i] = (byte) (sumInt % 10);
+//                sumInt -= digits[i];
+//                sumInt /= 10;
+//                System.out.println(digits[i]);
+//            }
+//            return true;
+//        }
+//    }
     boolean add(ArrayInteger num) {
-        int number1 = this.toInt().intValue();
-        int number2 = 0;
-        int myltyply = 1;
+        System.out.println(Arrays.toString(this.digits));
+        System.out.println(Arrays.toString(num.digits));
+        byte memo = 0;
+        byte remind = 0;
         for (int i = 0; i < num.digits.length; i++) {
-            number2 = number2 + myltyply * num.digits[i];
-            myltyply *= 10;
-        }
-        System.out.println("второе число = " + number2);
-        int sumInt = number1 + number2;
-
-        int nRazr = 1;
-        int sumIntTest = sumInt;
-        while (sumIntTest / 10 > 0) { // определение количества разрядов
-            sumIntTest = sumIntTest / 10;
-            nRazr++;
-            System.out.println(nRazr + " " + sumIntTest);
-        }
-        if (nRazr > digits.length) {
-            Arrays.fill(digits, (byte) 0);
-            return false;
-        } else {
-            for (int i = 0; i < nRazr; i++) {
-                digits[i] = (byte) (sumInt % 10);
-                sumInt -= digits[i];
-                sumInt /= 10;
-                System.out.println(digits[i]);
+            if (i==7) {
+                System.out.println("стоп");
             }
-            return true;
+            remind = (byte)((this.digits[i]+num.digits[i]) % 10 + memo);
+            System.out.print(i+" "+remind);
+            if (this.digits[i]+num.digits[i] > 10) {
+                memo=(byte)((this.digits[i]+num.digits[i])/10);
+            } else {
+                memo = 0;
+            }
+            this.digits[i] = remind;
+            if ((memo != 0 | num.digits[i+1] != 0) & i == this.digits.length-1){
+                Arrays.fill(digits, (byte) 0);
+                return false;
+            }
+            System.out.println(" остаток " + memo);
         }
+        return true;
     }
 
     public static void main(String[] args) {
         ArrayInteger arrI1 = new ArrayInteger(8);
-        arrI1.fromInt(new BigInteger("1"));
+        arrI1.fromInt(new BigInteger("12099845"));
         System.out.println(Arrays.toString(arrI1.digits));
         System.out.println(arrI1.toInt());
 
-        ArrayInteger arrI2 = new ArrayInteger(6);
-        arrI2.fromInt(new BigInteger("193327"));
-        arrI1.add(arrI2);
+        ArrayInteger arrI2 = new ArrayInteger(25);
+        arrI2.fromInt(new BigInteger("9223372036854775819265438"));
+        System.out.println(arrI1.add(arrI2));
         System.out.println(Arrays.toString(arrI1.digits));
 
     }
