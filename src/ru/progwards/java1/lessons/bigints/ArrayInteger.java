@@ -78,7 +78,7 @@ public class ArrayInteger {
             }
             remind = (byte)((this.digits[i]+num.digits[i]) % 10 + memo);
             System.out.print(i+" "+remind);
-            if (this.digits[i]+num.digits[i] > 10) {
+            if (this.digits[i]+num.digits[i] >= 10) {
                 memo=(byte)((this.digits[i]+num.digits[i])/10);
             } else {
                 memo = 0;
@@ -86,7 +86,7 @@ public class ArrayInteger {
             this.digits[i] = remind;
             if (i == this.digits.length-1){
                 int lastNum=0;
-                for (int j=i; j<num.digits.length; j++){
+                for (int j=i+1; j<num.digits.length; j++){
                     lastNum+=num.digits[j];
                 }
                 if (memo != 0 | lastNum !=0){
@@ -111,7 +111,7 @@ public class ArrayInteger {
         System.out.println(arrI1.toInt());
 
         ArrayInteger arrI2 = new ArrayInteger(25);
-        arrI2.fromInt(new BigInteger("9223372036854775819265438"));
+        arrI2.fromInt(new BigInteger("92099845"));
         System.out.println(arrI1.add(arrI2));
         System.out.println(Arrays.toString(arrI1.digits));
 
