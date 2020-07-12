@@ -1,6 +1,8 @@
 package ru.progwards.java1.lessons.bigints;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class ArrayInteger {
@@ -12,8 +14,8 @@ public class ArrayInteger {
 
     void fromInt(BigInteger value) {
         BigInteger valueTest = value;
-        int nRazr = 0;
-        while (valueTest.divide(BigInteger.TEN).compareTo(BigInteger.ZERO) > 0) { // определение количества разрядов
+        int nRazr = 1;
+        while (valueTest.divide(BigInteger.TEN).compareTo(BigInteger.ZERO) == 1) { // определение количества разрядов
             valueTest = valueTest.divide(BigInteger.TEN);
             nRazr++;
             System.out.println(nRazr + " " + valueTest);
@@ -47,7 +49,7 @@ public class ArrayInteger {
         System.out.println("второе число = " + number2);
         int sumInt = number1 + number2;
 
-        int nRazr = 0;
+        int nRazr = 1;
         int sumIntTest = sumInt;
         while (sumIntTest / 10 > 0) { // определение количества разрядов
             sumIntTest = sumIntTest / 10;
@@ -69,13 +71,13 @@ public class ArrayInteger {
     }
 
     public static void main(String[] args) {
-        ArrayInteger arrI1 = new ArrayInteger(14);
-        arrI1.fromInt(new BigInteger("25937424601"));
+        ArrayInteger arrI1 = new ArrayInteger(8);
+        arrI1.fromInt(new BigInteger("1"));
         System.out.println(Arrays.toString(arrI1.digits));
         System.out.println(arrI1.toInt());
 
-        ArrayInteger arrI2 = new ArrayInteger(3);
-        arrI2.fromInt(new BigInteger("678"));
+        ArrayInteger arrI2 = new ArrayInteger(6);
+        arrI2.fromInt(new BigInteger("193327"));
         arrI1.add(arrI2);
         System.out.println(Arrays.toString(arrI1.digits));
 
