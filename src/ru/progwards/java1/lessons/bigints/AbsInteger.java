@@ -11,7 +11,6 @@ public abstract class AbsInteger {
         return new IntInteger(numAbs);
     }
 
-
     public static void main(String[] args) {
         int num = 127;
         System.out.println(new ByteInteger((byte) num).toString());
@@ -35,7 +34,7 @@ class ByteInteger extends AbsInteger {
 
     @Override
     public String toString() {
-        return "число: " + num;
+        return String.valueOf(num);
     }
 }
 
@@ -49,7 +48,7 @@ class ShortInteger extends AbsInteger {
 
     @Override
     public String toString() {
-        return "число: " + num;
+        return String.valueOf(num);
     }
 
     int num() {
@@ -67,7 +66,7 @@ class IntInteger extends AbsInteger {
 
     @Override
     public String toString() {
-        return "число: " + num;
+        return String.valueOf(num);
     }
 
     int num() {
