@@ -37,37 +37,6 @@ public class ArrayInteger {
         return result;
     }
 
-    //    boolean add(ArrayInteger num) {
-//        int number1 = this.toInt().intValue();
-//        int number2 = 0;
-//        int myltyply = 1;
-//        for (int i = 0; i < num.digits.length; i++) {
-//            number2 = number2 + myltyply * num.digits[i];
-//            myltyply *= 10;
-//        }
-//        System.out.println("второе число = " + number2);
-//        int sumInt = number1 + number2;
-//
-//        int nRazr = 1;
-//        int sumIntTest = sumInt;
-//        while (sumIntTest / 10 > 0) { // определение количества разрядов
-//            sumIntTest = sumIntTest / 10;
-//            nRazr++;
-//            System.out.println(nRazr + " " + sumIntTest);
-//        }
-//        if (nRazr > digits.length) {
-//            Arrays.fill(digits, (byte) 0);
-//            return false;
-//        } else {
-//            for (int i = 0; i < nRazr; i++) {
-//                digits[i] = (byte) (sumInt % 10);
-//                sumInt -= digits[i];
-//                sumInt /= 10;
-//                System.out.println(digits[i]);
-//            }
-//            return true;
-//        }
-//    }
     boolean add(ArrayInteger num) {
         System.out.println(Arrays.toString(this.digits));
         System.out.println(Arrays.toString(num.digits));
