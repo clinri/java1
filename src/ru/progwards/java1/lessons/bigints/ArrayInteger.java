@@ -1,8 +1,6 @@
 package ru.progwards.java1.lessons.bigints;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.math.RoundingMode;
 import java.util.Arrays;
 
 public class ArrayInteger {
@@ -74,8 +72,8 @@ public class ArrayInteger {
         System.out.println(Arrays.toString(num.digits));
         byte memo = 0;
         byte remind = 0;
-        for (int i = 0; i < num.digits.length; i++) {
-            if (i==7) {
+        for (int i = 0; i < this.digits.length; i++) {
+            if (i==this.digits.length-1) {
                 System.out.println("стоп");
             }
             remind = (byte)((this.digits[i]+num.digits[i]) % 10 + memo);
@@ -86,10 +84,21 @@ public class ArrayInteger {
                 memo = 0;
             }
             this.digits[i] = remind;
-            if ((memo != 0 | num.digits[i+1] != 0) & i == this.digits.length-1){
-                Arrays.fill(digits, (byte) 0);
-                return false;
+            if (i == this.digits.length-1){
+                int lastNum=0;
+                for (int j=i; j<num.digits.length; j++){
+                    lastNum+=num.digits[j];
+                }
+                if (memo != 0 | lastNum !=0){
+                    Arrays.fill(digits, (byte) 0);
+                    return false;
+                } else {
+                    return true;
+                }
             }
+
+
+
             System.out.println(" остаток " + memo);
         }
         return true;
