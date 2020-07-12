@@ -84,6 +84,11 @@ public class ArrayInteger {
                 memo = 0;
             }
             this.digits[i] = remind;
+            System.out.println(" остаток " + memo);
+            if (i == num.digits.length-1 & num.digits.length < this.digits.length & memo != 0){
+                this.digits[i+1] = (byte) (this.digits[i+1] + memo);
+            }
+
             if (i == this.digits.length-1){
                 int lastNum=0;
                 for (int j=i+1; j<num.digits.length; j++){
@@ -97,9 +102,6 @@ public class ArrayInteger {
                 }
             }
 
-
-
-            System.out.println(" остаток " + memo);
         }
         return true;
     }
