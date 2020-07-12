@@ -72,7 +72,7 @@ public class ArrayInteger {
         System.out.println(Arrays.toString(num.digits));
         byte memo = 0;
         byte remind = 0;
-        for (int i = 0; i < this.digits.length; i++) {
+        for (int i = 0; i < num.digits.length; i++) {
             if (i==this.digits.length-1) {
                 System.out.println("стоп");
             }
