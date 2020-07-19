@@ -35,6 +35,7 @@ public class SeaBattleAlg {
     private static final int PLUS = 0b10;
 
     char field[][];
+    char fire[][];
     SeaBattle seaBattle;
     int hits;
 
@@ -49,12 +50,27 @@ public class SeaBattleAlg {
         System.out.println("-----------------------------");
     }
 
+    void printFire() {
+        for (int i = 0; i < seaBattle.getSizeY(); i++) {
+            String str = "|";
+            for (int j = 0; j < seaBattle.getSizeX(); j++) {
+                str += fire[j][i] + "|";
+            }
+            System.out.println(str);
+        }
+        System.out.println("-----------------------------");
+    }
+
     void init(SeaBattle seaBattle) {
         hits = 0;
         this.seaBattle = seaBattle;
         field = new char[seaBattle.getSizeX()][seaBattle.getSizeY()];
         for (int i = 0; i < seaBattle.getSizeY(); i++) {
             Arrays.fill(field[i], ' ');
+        }
+        fire = new char[seaBattle.getSizeX()][seaBattle.getSizeY()];
+        for (int i = 0; i < seaBattle.getSizeY(); i++) {
+            Arrays.fill(fire[i], ' ');
         }
         //print();
     }
@@ -130,7 +146,7 @@ public class SeaBattleAlg {
                 if (result == SeaBattle.FireResult.DESTROYED)
                     markDestroyed();
             }
-//            print();
+            //print();
             return result;
         } else {
             return SeaBattle.FireResult.MISS;
@@ -172,6 +188,12 @@ public class SeaBattleAlg {
         }
     }
 
+    void markFire(int x, int y, char mark) {
+        if (y >= 0 && y < seaBattle.getSizeX() && x >= 0 && x < seaBattle.getSizeY() && field[x][y] == ' ') {
+            fire[x][y] = mark;
+        }
+    }
+
     public void battleAlgorithm(SeaBattle seaBattle) {
         init(seaBattle);
 //        fireAndKill(7, 5);
@@ -189,14 +211,51 @@ public class SeaBattleAlg {
         stepFire(2);
     }
 
-    void stepFire(int offset) {
+    void stepFire(int offset){
+// 1
+//        for (int y = 0; y < seaBattle.getSizeX(); y++) {
+//            for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
+//                fireAndKill(x, y);
+//            }
+//            for (int x = y + offset; x >= 0; x -= 4) {
+//                fireAndKill(x, y);
+//            }
+
+// 2
+        int nextAlg;
         for (int y = 0; y < seaBattle.getSizeX(); y++) {
-            for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
-                fireAndKill(x, y);
-            }
-            for (int x = y + offset; x >= 0; x -= 4) {
-                if (x >= 0)
+            if (y==7)
+                nextAlg=1;
+            if (((y+1)%4)>0 && ((y+1)%4)<=2) {
+                for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
+                    markFire(x, y, 'X');
+                    printFire();
                     fireAndKill(x, y);
+                }
+                for (int x = y + offset; x >= 0; x -= 4) {
+                    if (x == (y + offset))
+                        continue;
+                    markFire(x, y, 'X');
+                    printFire();
+                    fireAndKill(x, y);
+                }
+            } else {
+                if (((y+1)%4)==3)
+                    nextAlg=1;
+                else
+                    nextAlg=3;
+                for (int x = y + nextAlg + offset; x < seaBattle.getSizeY(); x += 4) {
+                    markFire(x, y, 'X');
+                    printFire();
+                    fireAndKill(x, y);
+                }
+                for (int x = y + nextAlg + offset; x >= 0; x -= 4) {
+                    if (x == (y + nextAlg + offset))
+                        continue;
+                    markFire(x, y, 'X');
+                    printFire();
+                    fireAndKill(x, y);
+                }
             }
         }
     }
