@@ -120,7 +120,7 @@ public class SeaBattleAlg {
 
     SeaBattle.FireResult fire(int x, int y) {
         if (y >= 0 && y < seaBattle.getSizeX() && x >= 0 && x < seaBattle.getSizeY() &&
-                field[x][y] == ' ' && hits <= 20) {
+                field[x][y] == ' ' && hits < 20) {
             SeaBattle.FireResult result = seaBattle.fire(x, y);
             if (result == SeaBattle.FireResult.MISS)
                 mark(x, y, '*');
@@ -176,13 +176,31 @@ public class SeaBattleAlg {
 //        fire(9, 3);
 //         пример алгоритма:
 //         стрельба по всем квадратам поля полным перебором
-        for (int y = 0; y < seaBattle.getSizeY(); y++) {
-            for (int x = 0; x < seaBattle.getSizeX(); x++) {
+//        for (int y = 0; y < seaBattle.getSizeX(); y++) {
+//            for (int x = 0; x < seaBattle.getSizeY(); x++) {
+//                fireAndKill(x, y);
+//            }
+//        }
+        stepFire(3);
+        stepFire(1);
+        stepFire(0);
+        stepFire(2);
+    }
+
+    void stepFire(int offset) {
+        for (int y = 0; y < seaBattle.getSizeX(); y++) {
+            for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
                 fireAndKill(x, y);
-                print();
             }
+            for (int x = y - offset; x >= 0; x -= 4) {
+                fireAndKill(x, y);
+            }
+
+
         }
     }
+
+
 
     // функция для отладки
     public static void main(String[] args) {
