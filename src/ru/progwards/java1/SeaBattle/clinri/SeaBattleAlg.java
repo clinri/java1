@@ -192,8 +192,9 @@ public class SeaBattleAlg {
             for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
                 fireAndKill(x, y);
             }
-            for (int x = y - offset; x >= 0; x -= 4) {
-                fireAndKill(x, y);
+            for (int x = y - 1; x >= -seaBattle.getSizeY(); x -= 4) {
+                if (x>=0)
+                    fireAndKill(x, y);
             }
 
 
