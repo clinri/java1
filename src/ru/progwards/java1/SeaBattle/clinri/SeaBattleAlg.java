@@ -56,7 +56,7 @@ public class SeaBattleAlg {
         for (int i = 0; i < seaBattle.getSizeY(); i++) {
             Arrays.fill(field[i], ' ');
         }
-        print();
+        //print();
     }
 
     // функция интелектуальной стрельбы
@@ -94,9 +94,9 @@ public class SeaBattleAlg {
         direction = MINUS | PLUS; // 01 или 10 = 11 => оба направления не стрелялись
         int i = 1;
         do {
-            if ((direction&MINUS) != 0)
+            if ((direction & MINUS) != 0)
                 destroyed = checkHit(fire(x - i, y), MINUS); //стреляем на уменьшение координаты х
-            if ((direction&PLUS) != 0)
+            if ((direction & PLUS) != 0)
                 destroyed = checkHit(fire(x + i, y), PLUS); //стреляем на увеличение координаты х
             i++;
         } while (direction != 0);
@@ -130,7 +130,7 @@ public class SeaBattleAlg {
                 if (result == SeaBattle.FireResult.DESTROYED)
                     markDestroyed();
             }
-            print();
+//            print();
             return result;
         } else {
             return SeaBattle.FireResult.MISS;
@@ -145,10 +145,12 @@ public class SeaBattleAlg {
             }
         }
     }
+
     String test;
+
     private void markHit(int x, int y) {
         //if (x==7 && y==5)
-            //test="здесь!";
+        //test="здесь!";
         markDot(x - 1, y - 1);
         markDot(x, y - 1);
         markDot(x + 1, y - 1);
@@ -192,26 +194,24 @@ public class SeaBattleAlg {
             for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
                 fireAndKill(x, y);
             }
-            for (int x = y - 1; x >= -seaBattle.getSizeY(); x -= 4) {
-                if (x>=0)
+            for (int x = y + offset; x >= 0; x -= 4) {
+                if (x >= 0)
                     fireAndKill(x, y);
             }
-
-
         }
     }
-
 
 
     // функция для отладки
     public static void main(String[] args) {
         //System.out.println("Sea battle");
         double result = 0;
-        //for (int i=0; i<1000; i++){
-        SeaBattle seaBattle = new SeaBattle(true);
-        new SeaBattleAlg().battleAlgorithm(seaBattle);
-        result += seaBattle.getResult();
-        //}
-        System.out.println(result);
+        for (int i=0; i<1000; i++){
+            SeaBattle seaBattle = new SeaBattle();
+            new SeaBattleAlg().battleAlgorithm(seaBattle);
+            result += seaBattle.getResult();
+        }
+        System.out.println(result/1000);
+//        System.out.println(result);
     }
 }
