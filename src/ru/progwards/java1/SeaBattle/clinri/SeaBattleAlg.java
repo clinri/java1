@@ -211,8 +211,9 @@ public class SeaBattleAlg {
         stepFire(2);
     }
 
-    void stepFire(int offset) {
+
 // 1
+//    void stepFire(int offset) {
 //        for (int y = 0; y < seaBattle.getSizeX(); y++) {
 //            for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
 //                fireAndKill(x, y);
@@ -222,56 +223,85 @@ public class SeaBattleAlg {
 //            }
 //        }
 
-// 2
-        int nextAlg;
+    // 2
+//    void stepFire(int offset) {
+//        int nextAlg;
+//        for (int y = 0; y < seaBattle.getSizeX(); y++) {
+//            if (y == 7)
+//                nextAlg = 1;
+//            if (((y + 1) % 4) > 0 && ((y + 1) % 4) <= 2) {
+//                for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
+//                    //markFire(x, y, 'X');
+//                    //printFire();
+//                    fireAndKill(x, y);
+//                }
+//                for (int x = y + offset; x >= 0; x -= 4) {
+//                    if (x == (y + offset))
+//                        continue;
+//                    //markFire(x, y, 'X');
+//                    //printFire();
+//                    fireAndKill(x, y);
+//                }
+//            } else {
+//                if (((y + 1) % 4) == 3)
+//                    nextAlg = 1;
+//                else
+//                    nextAlg = 3;
+//                for (int x = y + nextAlg + offset; x < seaBattle.getSizeY(); x += 4) {
+//                    //markFire(x, y, 'X');
+//                    //printFire();
+//                    fireAndKill(x, y);
+//                }
+//                for (int x = y + nextAlg + offset; x >= 0; x -= 4) {
+//                    if (x == (y + nextAlg + offset))
+//                        continue;
+//                    //markFire(x, y, 'X');
+//                    //printFire();
+//                    fireAndKill(x, y);
+//                }
+//            }
+//        }
+// 3
+    void stepFire(int offset) {
+        int nextAlg = 0;
         for (int y = 0; y < seaBattle.getSizeX(); y++) {
-            if (y == 7)
-                nextAlg = 1;
-            if (((y + 1) % 4) > 0 && ((y + 1) % 4) <= 2) {
-                for (int x = y + offset; x < seaBattle.getSizeY(); x += 4) {
-                    //markFire(x, y, 'X');
-                    //printFire();
-                    fireAndKill(x, y);
-                }
-                for (int x = y + offset; x >= 0; x -= 4) {
-                    if (x == (y + offset))
-                        continue;
-                    //markFire(x, y, 'X');
-                    //printFire();
-                    fireAndKill(x, y);
-                }
+            if (((y + 1) % 4) > 0 && ((y + 1) % 4) <= 2) { // по 4х4 и каждяе 2 строки меняем алгоритм
+                methodFire1(y, nextAlg, offset);
             } else {
                 if (((y + 1) % 4) == 3)
                     nextAlg = 1;
                 else
                     nextAlg = 3;
-                for (int x = y + nextAlg + offset; x < seaBattle.getSizeY(); x += 4) {
-                    //markFire(x, y, 'X');
-                    //printFire();
-                    fireAndKill(x, y);
-                }
-                for (int x = y + nextAlg + offset; x >= 0; x -= 4) {
-                    if (x == (y + nextAlg + offset))
-                        continue;
-                    //markFire(x, y, 'X');
-                    //printFire();
-                    fireAndKill(x, y);
-                }
+                methodFire1(y, nextAlg, offset);
             }
         }
     }
 
+    void methodFire1(int y, int nextAlg, int offset) {
+        for (int x = y + nextAlg + offset; x < seaBattle.getSizeY(); x += 4) {
+            //markFire(x, y, 'X');
+            //printFire();
+            fireAndKill(x, y);
+        }
+        for (int x = y + nextAlg + offset; x >= 0; x -= 4) {
+            if (x == (y + nextAlg + offset))
+                continue;
+            //markFire(x, y, 'X');
+            //printFire();
+            fireAndKill(x, y);
+        }
+    }
 
     // функция для отладки
     public static void main(String[] args) {
         //System.out.println("Sea battle");
         double result = 0;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             SeaBattle seaBattle = new SeaBattle();
             new SeaBattleAlg().battleAlgorithm(seaBattle);
             result += seaBattle.getResult();
         }
-        System.out.println(result / 100);
+        System.out.println(result / 1000);
 //        System.out.println(result);
     }
 }
