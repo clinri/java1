@@ -13,7 +13,7 @@ import java.util.Scanner;
 // где каждому символу symbol оригинального файла соответствует символ code[(int)symbol] выходного файла.
 // В случае ошибок, в файл с именем logName вывести название ошибки через метод класса Exception - getMessage()
 public class Coder {
-    public static void codeFile(String inFileName, String outFileName, char[] code, String logName) throws IOException {
+    public static void codeFile(String inFileName, String outFileName, char[] code, String logName) {
         try {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
@@ -56,11 +56,7 @@ public class Coder {
         for (int i = 0; i < code.length; i++) {
             code[i] = (char) (i + 1);
         }
-        try {
             codeFile("file1.txt", "file2.txt", code, "log.txt");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }

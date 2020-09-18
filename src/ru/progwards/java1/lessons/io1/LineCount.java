@@ -7,7 +7,7 @@ import java.util.Scanner;
 //Создать статический метод public static int calcEmpty(String fileName),
 // в котором посчитать количество пустых строк в файле. В случае возникновения ошибок, вернуть -1
 public class LineCount {
-    public static int calcEmpty(String fileName) throws IOException{
+    public static int calcEmpty(String fileName) {
         try {
             FileReader reader = new FileReader(fileName);
             try {
@@ -23,15 +23,11 @@ public class LineCount {
                 reader.close();
             }
         } catch (IOException e) {
-            throw new IOException("-1");
+            return -1;
         }
     }
 
     public static void main(String[] args) {
-        try {
-            System.out.println(calcEmpty("file1.txt"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println(calcEmpty("file1.txt"));
     }
 }

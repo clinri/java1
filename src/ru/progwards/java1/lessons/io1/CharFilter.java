@@ -26,14 +26,14 @@ public class CharFilter {
             try {
                 Scanner scannerFilter = new Scanner(readerFilter);
                 char[] textFilter = scannerFilter.nextLine().toCharArray();
-                System.out.println(Arrays.toString(textFilter));
+                //System.out.println(Arrays.toString(textFilter));
                 char[] textIn;
                 String text = "";
                 boolean check = false;
                 Scanner scanner = new Scanner(reader);
                 while (scanner.hasNextLine()) {
                     textIn = scanner.nextLine().toCharArray();
-                    System.out.println(Arrays.toString(textIn));
+                    //System.out.println(Arrays.toString(textIn));
                     for (int i = 0; i < textIn.length; i++) {
                         for (int k = 0; k < textFilter.length; k++) {
                             if (textIn[i] == textFilter[k]) {
@@ -49,6 +49,7 @@ public class CharFilter {
                 }
             } finally {
                 reader.close();
+                readerFilter.close();
                 writer.close();
             }
         } catch (IOException e) {
