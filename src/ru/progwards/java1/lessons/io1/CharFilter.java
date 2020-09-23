@@ -21,24 +21,19 @@ public class CharFilter {
     public static void filterFile(String inFileName, String outFileName, String filter) throws Exception {
         try {
             FileReader reader = new FileReader(inFileName);
-            FileReader readerFilter = new FileReader(filter);
             FileWriter writer = new FileWriter(outFileName);
             try {
-                Scanner scannerFilter = new Scanner(readerFilter);
-                char[] textFilter = scannerFilter.nextLine().toCharArray();
-                //System.out.println(Arrays.toString(textFilter));
-                char[] textIn;
+                char[] textFilter = filter.toCharArray();
                 String text = "";
                 boolean check = false;
                 Scanner scanner = new Scanner(reader);
                 while (scanner.hasNextLine()) {
-                    textIn = scanner.nextLine().toCharArray();
+                    char[] textIn = scanner.nextLine().toCharArray();
                     //System.out.println(Arrays.toString(textIn));
                     for (int i = 0; i < textIn.length; i++) {
                         for (int k = 0; k < textFilter.length; k++) {
-                            if (textIn[i] == textFilter[k]) {
+                            if (textIn[i] == textFilter[k])
                                 check = true;
-                            }
                         }
                         if (!check)
                             text += textIn[i];
@@ -49,7 +44,6 @@ public class CharFilter {
                 }
             } finally {
                 reader.close();
-                readerFilter.close();
                 writer.close();
             }
         } catch (IOException e) {
@@ -58,8 +52,9 @@ public class CharFilter {
     }
 
     public static void main(String[] args) {
+        String filter =",.";
         try {
-            filterFile("file1.txt", "file2.txt", "key.txt");
+            filterFile("file1.txt", "file2.txt", filter);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -25,7 +25,7 @@ public class Coder {
 //                    System.out.println(Arrays.toString(textArrIn));
                     for (int i = 0; i < textArrIn.length; i++) {
 //                        System.out.println((int)textArrIn[i]);
-                        out += code[(int) textArrIn[i]];
+                        out += code[(int)textArrIn[i]];
                     }
 //                    System.out.println(out);
                     writer.write(out + "\n");
