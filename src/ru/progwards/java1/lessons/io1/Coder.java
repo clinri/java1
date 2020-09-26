@@ -18,19 +18,23 @@ public class Coder {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
             String text1 = "";
+            System.out.println(code);
             try {
                 Scanner scanner = new Scanner(reader);
                 String out = "";
                 while (scanner.hasNextLine()) {
-                    char[] textArrIn = scanner.nextLine().toCharArray(); // помещаем каждую строку текста посимвольно в массив
+                    text1=scanner.nextLine();
+                    System.out.println("Вх. текст: " + text1);
+                    char[] textArrIn = text1.toCharArray(); // помещаем каждую строку текста посимвольно в массив
 //                    System.out.println(Arrays.toString(textArrIn));
                     for (int i = 0; i < textArrIn.length; i++) {
 //                        System.out.println((int)textArrIn[i]);
                         out += code[(int)textArrIn[i]];
                     }
 //                    System.out.println(out);
-//                    writer.write(out + "\n");
-                    writer.write(out);
+                    System.out.println("Вых. текст: " + out);
+                    writer.write(out + "\n");
+//                    writer.write(out);
                     out = "";
                 }
             } finally {
