@@ -29,25 +29,23 @@ public class CharFilter {
                 String text = "";
                 boolean check = false;
                 Scanner scanner = new Scanner(reader);
-                while (scanner.hasNextLine()) {
-                    text1=scanner.nextLine();
-                    System.out.println("текст вх. строки: " + text1);
-                    char[] textIn = text1.toCharArray();
-                    //System.out.println(Arrays.toString(textIn));
-                    for (int i = 0; i < textIn.length; i++) {
-                        for (int k = 0; k < textFilter.length; k++) {
-                            if (textIn[i] == textFilter[k])
-                                check = true;
-                        }
-                        if (!check)
-                            text += textIn[i];
-                        check = false;
+
+                text1 = scanner.nextLine();
+                System.out.println("текст вх. строки: " + text1);
+                char[] textIn = text1.toCharArray();
+                //System.out.println(Arrays.toString(textIn));
+                for (int i = 0; i < textIn.length; i++) {
+                    for (int k = 0; k < textFilter.length; k++) {
+                        if (textIn[i] == textFilter[k])
+                            check = true;
                     }
-                    System.out.println("текст исх. строки: " + text);
-                    //writer.write(text + "\n");
-                    writer.write(text);
-                    text="";
+                    if (!check)
+                        text += textIn[i];
+                    check = false;
                 }
+                System.out.println("текст исх. строки: " + text);
+                //writer.write(text + "\n");
+                writer.write(text);
             } finally {
                 reader.close();
                 writer.close();
@@ -58,7 +56,7 @@ public class CharFilter {
     }
 
     public static void main(String[] args) {
-        String filter =",.";
+        String filter = ",.";
         try {
             filterFile("file1.txt", "file2.txt", filter);
         } catch (Exception e) {

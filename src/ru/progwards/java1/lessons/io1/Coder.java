@@ -17,6 +17,7 @@ public class Coder {
         try {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
+            String text1 = "";
             try {
                 Scanner scanner = new Scanner(reader);
                 String out = "";
@@ -28,7 +29,8 @@ public class Coder {
                         out += code[(int)textArrIn[i]];
                     }
 //                    System.out.println(out);
-                    writer.write(out + "\n");
+//                    writer.write(out + "\n");
+                    writer.write(out);
                     out = "";
                 }
             } finally {
