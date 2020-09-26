@@ -44,7 +44,8 @@ public class CharFilter {
                         check = false;
                     }
                     System.out.println("текст исх. строки: " + text);
-                    writer.write(text + "\n");
+                    //writer.write(text + "\n");
+                    writer.write(text);
                     text="";
                 }
             } finally {
