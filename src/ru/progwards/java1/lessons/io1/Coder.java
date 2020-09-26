@@ -33,7 +33,7 @@ public class Coder {
                     for (int i = 0; i < textArrIn.length; i++) {
                         System.out.print("номер сивола: ");
                         System.out.print((int)textArrIn[i]);
-                        System.out.print(". сивол вх: \"");
+                        System.out.print(".\t сивол вх: \"");
                         System.out.print(textArrIn[i]);
                         System.out.print("\" сивол вых: \"");
                         System.out.print(code[(int)textArrIn[i]]);
