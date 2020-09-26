@@ -18,6 +18,9 @@ public class Coder {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
             String text1 = "";
+            System.out.print("количество символов в коде: ");
+            System.out.println(code.length);
+            System.out.print("код: ");
             System.out.println(code);
             try {
                 Scanner scanner = new Scanner(reader);
