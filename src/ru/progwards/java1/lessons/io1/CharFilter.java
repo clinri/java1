@@ -22,13 +22,17 @@ public class CharFilter {
         try {
             FileReader reader = new FileReader(inFileName);
             FileWriter writer = new FileWriter(outFileName);
+            String text1 = "";
+            System.out.println("фильтр: " + filter);
             try {
                 char[] textFilter = filter.toCharArray();
                 String text = "";
                 boolean check = false;
                 Scanner scanner = new Scanner(reader);
                 while (scanner.hasNextLine()) {
-                    char[] textIn = scanner.nextLine().toCharArray();
+                    text1=scanner.nextLine();
+                    System.out.println("текст вх. строки: " + text1);
+                    char[] textIn = text1.toCharArray();
                     //System.out.println(Arrays.toString(textIn));
                     for (int i = 0; i < textIn.length; i++) {
                         for (int k = 0; k < textFilter.length; k++) {
@@ -39,6 +43,7 @@ public class CharFilter {
                             text += textIn[i];
                         check = false;
                     }
+                    System.out.println("текст исх. строки: " + text);
                     writer.write(text + "\n");
                     text="";
                 }
