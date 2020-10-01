@@ -20,7 +20,7 @@ public class Coder {
             String text1 = "";
             System.out.print("количество символов в коде: ");
             System.out.println(code.length);
-            System.out.print("код: ");
+            System.out.print("шифр: ");
             System.out.println(code);
             try {
                 Scanner scanner = new Scanner(reader);
@@ -41,17 +41,17 @@ public class Coder {
                         out += code[(int)textArrIn[i]];
                     }
                     // кодирование переноса строки
-                    String str1013="\n";
-                    char [] symbol1013 = str1013.toCharArray();
-                    for (int i = 0; i < symbol1013.length; i++) {
-                        System.out.print("номер сивола: ");
-                        System.out.print((int)symbol1013[i]);
-                        System.out.print(".\t сивол вх: \"перенос каретки");
-                        System.out.print("\" сивол вых: \"");
-                        System.out.print(code[(int)symbol1013[i]]);
-                        System.out.println("\"");
-                        out += code[(int)symbol1013[i]];
-                    }
+//                    String str1013="\n";
+//                    char [] symbol1013 = str1013.toCharArray();
+//                    for (int i = 0; i < symbol1013.length; i++) {
+//                        System.out.print("номер сивола: ");
+//                        System.out.print((int)symbol1013[i]);
+//                        System.out.print(".\t сивол вх: \"перенос каретки");
+//                        System.out.print("\" сивол вых: \"");
+//                        System.out.print(code[(int)symbol1013[i]]);
+//                        System.out.println("\"");
+//                        out += code[(int)symbol1013[i]];
+//                    }
                 }
                 //                    System.out.println(out);
                 System.out.println("Вых. текст: " + out);
