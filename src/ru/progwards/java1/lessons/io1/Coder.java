@@ -40,12 +40,22 @@ public class Coder {
                         System.out.println("\"");
                         out += code[(int)textArrIn[i]];
                     }
-//                    System.out.println(out);
-                    System.out.println("Вых. текст: " + out);
-                    writer.write(out + "\n");
-//                    writer.write(out);
-                    out = "";
+                    // кодирование переноса строки
+                    String str1013="\n";
+                    char [] symbol1013 = str1013.toCharArray();
+                    for (int i = 0; i < symbol1013.length; i++) {
+                        System.out.print("номер сивола: ");
+                        System.out.print((int)symbol1013[i]);
+                        System.out.print(".\t сивол вх: \"перенос каретки");
+                        System.out.print("\" сивол вых: \"");
+                        System.out.print(code[(int)symbol1013[i]]);
+                        System.out.println("\"");
+                        out += code[(int)symbol1013[i]];
+                    }
                 }
+                //                    System.out.println(out);
+                System.out.println("Вых. текст: " + out);
+                writer.write(out);
             } finally {
                 reader.close();
                 writer.close();
