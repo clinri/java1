@@ -17,7 +17,7 @@ public class test103 {
                 int i = 0;
                 while (scanner.hasNextLine()) {
                     String strFromFile = scanner.nextLine();
-                    System.out.println(strFromFile);
+                    //System.out.println(strFromFile);
                     i++;
                 }
                 return i;

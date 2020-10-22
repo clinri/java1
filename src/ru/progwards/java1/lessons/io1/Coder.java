@@ -31,7 +31,7 @@ public class Coder {
                     char[] textArrIn = text1.toCharArray(); // помещаем каждую строку текста посимвольно в массив
 //                    System.out.println(Arrays.toString(textArrIn));
                     for (int i = 0; i < textArrIn.length; i++) {
-                        System.out.print("номер сивола: ");
+                        System.out.print("номер символа: ");
                         System.out.print((int)textArrIn[i]);
                         System.out.print(".\t сивол вх: \"");
                         System.out.print(textArrIn[i]);
