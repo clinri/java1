@@ -1,5 +1,7 @@
 package ru.progwards.java1.lessons.io2;
 
+import java.sql.SQLOutput;
+
 //Создать класс Translator - переводчик, который будет переводить предложения с одного языка на другой
 //
 //2.1 Конструктор Translator(String[] inLang, String[] outLang), где inLang и outLang - массивы слов на разных языках,
@@ -19,8 +21,12 @@ public class Translator {
     private String[] outLang;
 
     Translator(String[] inLang, String[] outLang) {
-        this.inLang = inLang;
-        this.outLang = outLang;
+        try {
+            this.inLang = inLang;
+            this.outLang = outLang;
+        } catch (Exception e) {
+            System.out.println("ошибка в строке:" + e.getStackTrace()[0].getLineNumber() + " описание: " + e.getMessage());
+        }
     }
 
     public String translate(String sentence) {
@@ -31,7 +37,7 @@ public class Translator {
             wordsOut[i] = fixBigLetter(wordsIn[i], wordsOut[i]);
         }
         for (int i = 0; i < wordsIn.length; i++) {
-            sentence=sentence.replaceAll(wordsIn[i],wordsOut[i]);
+            sentence = sentence.replaceAll(wordsIn[i], wordsOut[i]);
         }
         return sentence;
     }
@@ -68,6 +74,6 @@ public class Translator {
         String inLang = "hello,world";
         String outLang = "привет,мир";
         Translator translator = new Translator(inLang.split(","), outLang.split(","));
-        System.out.println(translator.translate("Hello World!"));
+        System.out.println(translator.translate("Hello World! Hello..."));
     }
 }

@@ -25,7 +25,7 @@ public class Censor {
         public String exMessage;
         public int numberEx;
 
-        public CensorException(String fileName, String exMessage, int numberEx) {
+        public CensorException(String fileName, String exMessage, String numberEx) {
             this.fileName = fileName;
             this.numberEx = numberEx;
             this.exMessage = exMessage;
@@ -57,7 +57,7 @@ public class Censor {
             file.seek(0);
             file.write(textIn.getBytes("UTF8"));
         } catch (Exception ex){
-            throw new CensorException(inoutFileName,ex.getMessage(),ex.getStackTrace()[0].getLineNumber());
+            throw new CensorException(inoutFileName,ex.getMessage(),inoutFileName == null ? "null" : String.valueOf(ex.getStackTrace()[0].getLineNumber()));
         }
     }
 
