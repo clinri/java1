@@ -23,7 +23,7 @@ public class Censor {
     public static class CensorException extends Exception {
         public String fileName = "";
         public String exMessage;
-        public int numberEx;
+        public String numberEx;
 
         public CensorException(String fileName, String exMessage, String numberEx) {
             this.fileName = fileName;
