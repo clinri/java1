@@ -26,7 +26,7 @@ public class RandAccessFile {
             for (int i = 9; i < test.length(); i += 10) {
                 test.seek(i);
                 int inputSym = test.read();
-                System.out.println((char)inputSym);
+//                System.out.println((char)inputSym);
                 test.seek(i);
                 test.writeBytes("*");
                 outEx += (char)inputSym;

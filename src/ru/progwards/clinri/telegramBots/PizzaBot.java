@@ -1,8 +1,60 @@
 package ru.progwards.clinri.telegramBots;
 
+/*
+Документация на Progwards telegramm bot 2
+public class ProgwardsTelegramBot extends TelegramLongPollingBot
+Класс - наследник класса для создания Телеграмм ботов
+
+public ProgwardsTelegramBot()
+конструктор по умолчанию
+
+public String username
+usrname бота в Телеграмм
+
+public String token
+токен бота в Телеграмм
+
+public void addTags(String name, String tags)
+добавить тэги по имени
+name - имя груааы тэгов
+tags - сами тэги
+
+public FoundTags checkTags(String text)
+вернуть теги, соответствующие запросу в text
+
+public boolean checkLastFound(FoundTags found, String text)
+проверяет соответствие найденного тому, что в text
+return getLastFound(found).toLowerCase().equals(text.toLowerCase());
+
+public String getLastFound(FoundTags found)
+вернуть наиболее подходящий элемент
+
+public int foundCount(FoundTags found)
+вернуть количество найденного
+
+public String extract(FoundTags found)
+вернуть подходящие тэги по запросу
+
+public void setUserData(Integer userid, String name, String data)
+сохранить данные data для пользователя user с ключом name
+
+public String getUserData(Integer userid, String name)
+получить данные для пользователя user с ключом name
+
+public void cleartUserData(Integer userid)
+удалить данные для пользователя user
+
+public String processMessage(Integer userid, String text)
+обработка сообщения text пользователя user и выдача результата
+
+public void start()
+запускает телеграмм-бота
+ */
 
 import org.telegram.telegrambots.ApiContextInitializer;
 import ru.progwards.java1.testlesson.ProgwardsTelegramBot;
+
+import java.util.Scanner;
 
 public class PizzaBot extends ProgwardsTelegramBot {
     private final String menu = "У нас есть пицца, напитки и десерты";
@@ -54,6 +106,26 @@ public class PizzaBot extends ProgwardsTelegramBot {
         bot.addTags("Холодный чай", "напит, пить, чай, липтон, лимон");
         bot.addTags("Сок", "напит, пить, сок, апельсиноый, яблочный, вишневый");
 
-        bot.start();
+//        bot.start();
+        bot.test();
+    }
+
+    void test() {
+        Scanner in = new Scanner(System.in);
+        String input;
+//    	TUser user = new TUser();
+        do {
+            input = in.nextLine();
+//    		System.out.println(processMessage(user, input));
+            System.out.println(processMessage(input));
+        } while (!input.equals("стоп"));
     }
 }
+
+
+
+
+
+
+
+
