@@ -19,6 +19,7 @@ public class MatrixIterator<T> implements Iterator<T> {
     private int currentSizeCol;
 
     MatrixIterator(T[][] array) {
+        System.out.println("Конструктор запущен");
         this.array = array;
         this.currentIndex = 0;
         this.currentIndexRow = 0;
@@ -28,6 +29,7 @@ public class MatrixIterator<T> implements Iterator<T> {
         for (int i = 0; i < array.length; i++) {
             this.currentSize += array[i].length;
         }
+        System.out.println("Размер одномерного массива: " + this.currentSize);
     }
 
     @Override
