@@ -53,7 +53,6 @@ public class MatrixIterator<T> implements Iterator<T> {
     }
 
     public static void main(String[] args) {
-        int volumeArr = 10;
         Integer[][] arrInt = new Integer[4][4];
         arrInt[0] = new Integer[]{1, 2, 3, 4};
         arrInt[1] = new Integer[]{5, 6, 7, 8};
@@ -66,7 +65,7 @@ public class MatrixIterator<T> implements Iterator<T> {
             }
         }
         System.out.println("==");
-        MatrixIterator<Integer> arrIterator = new MatrixIterator<Integer>(arrInt);
+        MatrixIterator<Integer> arrIterator = new MatrixIterator<>(arrInt);
         while (arrIterator.hasNext()) {
             System.out.println(arrIterator.next());
         }
