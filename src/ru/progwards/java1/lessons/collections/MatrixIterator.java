@@ -25,7 +25,7 @@ public class MatrixIterator<T> implements Iterator<T> {
         this.currentIndexRow = 0;
         this.currentIndexCol = 0;
         this.currentSize = 0;
-        this.currentSizeCol = this.array[0].length;
+        //this.currentSizeCol = this.array[0].length;
         for (int i = 0; i < array.length; i++) {
             this.currentSize += array[i].length;
         }
@@ -65,7 +65,7 @@ public class MatrixIterator<T> implements Iterator<T> {
             }
         }
         System.out.println("==");
-        MatrixIterator<Integer> arrIterator = new MatrixIterator<>(arrInt);
+        MatrixIterator arrIterator = new MatrixIterator(arrInt);
         while (arrIterator.hasNext()) {
             System.out.println(arrIterator.next());
         }
