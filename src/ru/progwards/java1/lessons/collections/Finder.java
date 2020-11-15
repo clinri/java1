@@ -44,7 +44,7 @@ public class Finder {
             numNext = (int) ((ArrayList) numbers).get(i + 1);
             numPrev = (int) ((ArrayList) numbers).get(i - 1);
             if (num > numPrev & num > numNext)
-                arrayListMaxIndex.add(i);
+                arrayListMaxIndex.add(num);
         }
         return arrayListMaxIndex;
     }
@@ -93,31 +93,31 @@ public class Finder {
             arrayList.add(i);
         }
         arrayList.set(1, 3);
-//        arrayList.add(4, 7);
+        arrayList.add(4, 7);
         ((ArrayList) arrayList).trimToSize();
-//        for (Integer intObj : arrayList) {
-//            System.out.println(intObj);
-//        }
-//        System.out.println("==");
+        for (Integer intObj : arrayList) {
+            System.out.println(intObj);
+        }
+        System.out.println("==");
 //        for (Integer intObj : findMinSumPair(arrayList)) {
 //            System.out.println(intObj);
 //        }
-//        for (Integer intObj : findLocalMax(arrayList)) {
-//            System.out.println(intObj);
-//        }
+        for (Integer intObj : findLocalMax(arrayList)) {
+            System.out.println(intObj);
+        }
 //        System.out.println(findSequence(arrayList));
-        List<String> arrayListString = new ArrayList();
-        arrayListString.add("Андрей");
-        arrayListString.add("Василий");
-        arrayListString.add("Евгений");
-        arrayListString.add("Евгений");
-        arrayListString.add("Евгений");
-        arrayListString.add("Василий");
-        arrayListString.add("Василий");
-        arrayListString.add("Василий");
-        arrayListString.add("Василий");
-
-        System.out.println(findSimilar(arrayListString));
+//        List<String> arrayListString = new ArrayList();
+//        arrayListString.add("Андрей");
+//        arrayListString.add("Василий");
+//        arrayListString.add("Евгений");
+//        arrayListString.add("Евгений");
+//        arrayListString.add("Евгений");
+//        arrayListString.add("Василий");
+//        arrayListString.add("Василий");
+//        arrayListString.add("Василий");
+//        arrayListString.add("Василий");
+//
+//        System.out.println(findSimilar(arrayListString));
 
     }
 }
