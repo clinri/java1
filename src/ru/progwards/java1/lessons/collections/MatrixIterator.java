@@ -66,7 +66,7 @@ public class MatrixIterator<T> implements Iterator<T> {
             }
         }
         System.out.println("==");
-        MatrixIterator<Integer> arrIterator = new MatrixIterator(arrInt);
+        MatrixIterator<Integer> arrIterator = new MatrixIterator<Integer>(arrInt);
         while (arrIterator.hasNext()) {
             System.out.println(arrIterator.next());
         }
