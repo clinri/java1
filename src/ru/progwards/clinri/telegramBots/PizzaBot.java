@@ -1,56 +1,5 @@
 package ru.progwards.clinri.telegramBots;
 
-/*
-Документация на Progwards telegramm bot 2
-public class ProgwardsTelegramBot extends TelegramLongPollingBot
-Класс - наследник класса для создания Телеграмм ботов
-
-public ProgwardsTelegramBot()
-конструктор по умолчанию
-
-public String username
-usrname бота в Телеграмм
-
-public String token
-токен бота в Телеграмм
-
-public void addTags(String name, String tags)
-добавить тэги по имени
-name - имя груааы тэгов
-tags - сами тэги
-
-public FoundTags checkTags(String text)
-вернуть теги, соответствующие запросу в text
-
-public boolean checkLastFound(FoundTags found, String text)
-проверяет соответствие найденного тому, что в text
-return getLastFound(found).toLowerCase().equals(text.toLowerCase());
-
-public String getLastFound(FoundTags found)
-вернуть наиболее подходящий элемент
-
-public int foundCount(FoundTags found)
-вернуть количество найденного
-
-public String extract(FoundTags found)
-вернуть подходящие тэги по запросу
-
-public void setUserData(Integer userid, String name, String data)
-сохранить данные data для пользователя user с ключом name
-
-public String getUserData(Integer userid, String name)
-получить данные для пользователя user с ключом name
-
-public void cleartUserData(Integer userid)
-удалить данные для пользователя user
-
-public String processMessage(Integer userid, String text)
-обработка сообщения text пользователя user и выдача результата
-
-public void start()
-запускает телеграмм-бота
- */
-
 import org.telegram.telegrambots.ApiContextInitializer;
 import ru.progwards.java1.testlesson.ProgwardsTelegramBot;
 
@@ -94,9 +43,9 @@ public class PizzaBot extends ProgwardsTelegramBot {
         bot.addTags("конец", "конец, все, стоп, нет");
         bot.addTags("дурак", "дурак, придурок, идиот, тупой");
 
-        bot.addTags("Пицца гавайская", "гавайск, пицц, ананас, куриц");
-        bot.addTags("Пицца маргарита", "маргарит, пицц, моцарелла, сыр, кетчуп, помидор");
-        bot.addTags("Пицца пеперони", "пеперони, пицц, салями, колбас, сыр, кетчуп, помидор");
+        bot.addTags("Пицца гавайская", "гавайск, пицц, пица, ананас, куриц");
+        bot.addTags("Пицца маргарита", "маргарит, пицц, пица, моцарелла, сыр, кетчуп, помидор");
+        bot.addTags("Пицца пеперони", "пеперони, пицц, пица, салями, колбас, сыр, кетчуп, помидор");
 
         bot.addTags("Торт тирамису", "десерт, кофе, маскарпоне, бисквит");
         bot.addTags("Торт медовик", "десерт, мед, бисквит");
@@ -106,8 +55,8 @@ public class PizzaBot extends ProgwardsTelegramBot {
         bot.addTags("Холодный чай", "напит, пить, чай, липтон, лимон");
         bot.addTags("Сок", "напит, пить, сок, апельсиноый, яблочный, вишневый");
 
-//        bot.start();
-        bot.test();
+        bot.start();
+//        bot.test();
     }
 
     void test() {

@@ -11,21 +11,18 @@ public class ArrayIterator<T> implements Iterator<T> {
 
     ArrayIterator(T[] array) {
         this.array = array;
-        this.currentSize = array.length;
-        this.currentIndex = 0;
+        currentSize = array.length;
+        currentIndex = 0;
     }
 
     @Override
     public boolean hasNext()  {
-        if (this.currentIndex < this.currentSize && this.array[currentIndex] != null)
-            return true;
-        else
-            return false;
+        return currentIndex < currentSize;
     }
 
     @Override
     public T next() throws IndexOutOfBoundsException {
-        T result = this.array[this.currentIndex++];
+        T result = array[currentIndex++];
         return result;
     }
 

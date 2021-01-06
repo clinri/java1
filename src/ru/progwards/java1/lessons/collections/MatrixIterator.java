@@ -16,38 +16,33 @@ public class MatrixIterator<T> implements Iterator<T> {
     private int currentIndexRow;
     private int currentIndexCol;
     private int currentSize;
-    private int currentSizeCol;
 
     MatrixIterator(T[][] array) {
         System.out.println("Конструктор запущен");
         this.array = array;
-        this.currentIndex = 0;
-        this.currentIndexRow = 0;
-        this.currentIndexCol = 0;
-        this.currentSize = 0;
-        //this.currentSizeCol = this.array[0].length;
+        currentIndex = 0;
+        currentIndexRow = 0;
+        currentIndexCol = 0;
+        currentSize = 0;
         for (int i = 0; i < array.length; i++) {
-            this.currentSize += array[i].length;
+            currentSize += array[i].length;
         }
-        System.out.println("Размер одномерного массива: " + this.currentSize);
+        System.out.println("Размер одномерного массива: " + currentSize);
     }
 
     @Override
     public boolean hasNext() {
-        if (this.currentIndex < this.currentSize && this.array[currentIndexRow][currentIndexCol] != null)
-            return true;
-        else
-            return false;
+        return  currentIndex < currentSize;
     }
 
     @Override
     public T next() throws IndexOutOfBoundsException {
-        T result = this.array[this.currentIndexRow][this.currentIndexCol];
-        this.currentIndex++;
-        this.currentIndexCol++;
-        if (this.currentIndexCol == this.array[this.currentIndexRow].length) {
-            this.currentIndexRow++;
-            this.currentIndexCol = 0;
+        T result = array[currentIndexRow][currentIndexCol];
+        currentIndex++;
+        currentIndexCol++;
+        if (currentIndexCol == array[currentIndexRow].length) {
+            currentIndexRow++;
+            currentIndexCol = 0;
         }
         return result;
     }
@@ -57,7 +52,7 @@ public class MatrixIterator<T> implements Iterator<T> {
         arrInt[0] = new Integer[]{1, 2, 3, 4};
         arrInt[1] = new Integer[]{5, 6, 7, 8};
         arrInt[2] = new Integer[]{9, 10, 11, 12};
-        arrInt[3] = new Integer[]{13, 14, 15, 16};
+        arrInt[3] = new Integer[]{13, 14, null, 16};
 
         for (Integer[] val1 : arrInt) {
             for (Integer val2 : val1) {
@@ -65,7 +60,7 @@ public class MatrixIterator<T> implements Iterator<T> {
             }
         }
         System.out.println("==");
-        MatrixIterator arrIterator = new MatrixIterator(arrInt);
+        MatrixIterator <Iterator> arrIterator = new MatrixIterator(arrInt);
         while (arrIterator.hasNext()) {
             System.out.println(arrIterator.next());
         }
