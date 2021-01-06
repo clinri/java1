@@ -2,33 +2,31 @@ package ru.progwards.java1.lessons.sets;
 
 import java.util.*;
 
-public class ProductAnalytics {
-    class Product {
-        private String code;
+class Shop {
+    List<Product> products;
 
-        public Product(String code) {
-            this.code = code;
-        }
-
-        public String getCode() {
-            return this.code;
-        }
-
+    public Shop(List<Product> products) {
+        this.products = products;
     }
 
-    class Shop {
-        private List<Product> products;
+    public List<Product> getProducts() {
+        return this.products;
+    }
+}
 
-        public Shop(List<Product> products) {
-            this.products = products;
-        }
+class Product {
+    private String code;
 
-        public List<Product> getProducts() {
-            return this.products;
-        }
+    public Product(String code) {
+        this.code = code;
     }
 
+    public String getCode() {
+        return this.code;
+    }
+}
 
+class ProductAnalytics {
     private List<Shop> shops;
     private List<Product> products;
     public ProductAnalytics(List<Product> products, List<Shop> shops) {
@@ -89,6 +87,10 @@ public class ProductAnalytics {
         productsAllShops.retainAll(products); // пересечение с products
         return productsAllShops;
 
+
+    }
+
+    public static void main(String[] args) {
 
     }
 }
