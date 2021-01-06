@@ -41,6 +41,7 @@ public class LettersInFile {
     }
 
     public static String process(String fileName) throws Exception {
+        init();
         FileReader fileReader = new FileReader(fileName);
         for (int intObj; (intObj =  fileReader.read())>=0;){
             if (allowedLetters.contains((char)intObj)) {
@@ -57,7 +58,6 @@ public class LettersInFile {
     }
 
     public static void main(String[] args) throws Exception {
-        init();
         process("file.txt");
     }
 }
