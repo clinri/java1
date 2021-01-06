@@ -1,9 +1,5 @@
 package ru.progwards.java1.lessons.sets;
 
-import com.google.common.base.Predicates;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
