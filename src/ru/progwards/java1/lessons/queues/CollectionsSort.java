@@ -39,7 +39,7 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
     public static void minSort(Collection<Integer> data){
         Collection<Integer> collect = new ArrayList();
         Integer intMinObj = 0;
-        while (data.size() != 0){
+        while (!data.isEmpty()){
             intMinObj = Collections.min(data);
             collect.add(intMinObj);
             data.remove(intMinObj);
