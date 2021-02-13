@@ -7,7 +7,8 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
     //1.1 Реализовать метод public static void mySort(Collection<Integer> data) - переделать алгоритм из
     // класса ArraySort из ДЗ про массивы, на коллекции. Не использовать встроенные методы сортировок
     public static void mySort(Collection<Integer> data){
-        ArrayList arrListData = (ArrayList) data;
+        System.out.println("data" + data);
+        ArrayList<Integer> arrListData = (ArrayList) data;
         ////1. Берем первый элемент и сравниваем его со вторым, если второй меньше, меняем элементы в массиве местами.
         ////2. Далее, сравниваем первый элемент с третьим, и если третий меньше, меняем их местами.
         ////3. Так делаем для всех элементов с индексом больше первого
@@ -28,7 +29,8 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
                 }
             }
         }
-        System.out.println(new Object(){}.getClass().getEnclosingMethod().getName());
+        //System.out.println(new Object(){}.getClass().getEnclosingMethod().getName());
+        System.out.println("mySort" + arrListData);
     }
     //1.2 Реализовать метод public static void minSort(Collection<Integer> data) по следующему алгоритму
     //- создать новую коллекцию
@@ -57,7 +59,7 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
 
     public CollectionsSort (String nameMethod, Long timeWork){
         this.nameMethod = nameMethod;
-        this.timeWork=timeWork;
+        this.timeWork = timeWork;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
     static final int ELEMENTS_COUNT = 1_000;
 
     public static Collection<String> compareSort(){
-                List<Integer> testArrayList = new ArrayList<>();
+        List<Integer> testArrayList = new ArrayList();
         for (int i=ELEMENTS_COUNT; i>0; i--){
             testArrayList.add(i);
         }
