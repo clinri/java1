@@ -26,8 +26,8 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
     // класса ArraySort из ДЗ про массивы, на коллекции. Не использовать встроенные методы сортировок
     public static void mySort(Collection<Integer> data){
         System.out.println("mySort (полученное data): " + data);
-        ArrayList<Integer> arrListData = new ArrayList<>(data.size());
-        arrListData.addAll(data);
+        Integer[] arrListData;
+        arrListData = data.toArray(new Integer[0]);
         ////1. Берем первый элемент и сравниваем его со вторым, если второй меньше, меняем элементы в массиве местами.
         ////2. Далее, сравниваем первый элемент с третьим, и если третий меньше, меняем их местами.
         ////3. Так делаем для всех элементов с индексом больше первого
@@ -39,17 +39,18 @@ public class CollectionsSort implements Comparable<CollectionsSort> {
         //// внешний по i и внутренний по j. Внутренний цикл начинается от i+1, и если a[i] > a[j],
         // то нужно поменять элементы a[i] и a[j] местами.
         Integer memory;
-        for (int i=0; i<arrListData.size()-1; i++){
-            for (int j=i+1; j<arrListData.size(); j++) {
-                if (arrListData.get(i)>arrListData.get(j)){ //сравниваем предыдущий и следующий элемент.
-                    memory = arrListData.get(i); //если второй больше, то меняем элементы местами
-                    arrListData.set(i,arrListData.get(j));
-                    arrListData.set(j,memory);
+        for (int i=0; i<arrListData.length-1; i++){
+            for (int j=i+1; j<arrListData.length; j++) {
+                if (arrListData[i]>arrListData[i]){ //сравниваем предыдущий и следующий элемент.
+                    memory = arrListData[i]; //если второй больше, то меняем элементы местами
+                    arrListData[i] = arrListData[j];
+                    arrListData[j]=memory;
                 }
             }
         }
         data.clear();
-        data.addAll(arrListData);
+        for (Integer value : arrListData)
+            data.add(value);
         //System.out.println(new Object(){}.getClass().getEnclosingMethod().getName());
         System.out.println("mySort (отсортированное data): " + data);
     }
