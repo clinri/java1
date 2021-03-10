@@ -1,7 +1,5 @@
 package ru.progwards.clinri.T103;
 
-import com.google.inject.internal.cglib.core.$DefaultNamingPolicy;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;

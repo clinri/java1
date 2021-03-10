@@ -8,7 +8,8 @@ public class CyclesGoldenFibo {
         for (int t1=1; t1<101; t1++){
             for (int t2=1; t2<101; t2++){
                 for (int t3=1; t3<101; t3++){
-                    if (isGoldenTriangle(t1,t2,t3)) System.out.println("треугольник со сторонами " + t1 + " " + t2 + " " + t3 + " золотой: " +isGoldenTriangle(t1,t2,t3));
+                    if (isGoldenTriangle(t1,t2,t3)) System.out.println("треугольник со сторонами " +
+                            t1 + " " + t2 + " " + t3 + " золотой: " +isGoldenTriangle(t1,t2,t3));
                 }
             }
         }
