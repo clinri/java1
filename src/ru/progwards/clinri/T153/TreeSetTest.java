@@ -12,12 +12,15 @@ public class TreeSetTest {
             if (!map.isEmpty()){
                 if (!map.containsKey(key) & key < map.lastKey() & key > map.firstKey()) map.put(key, value);
             }
+
         }
 
     public static void main(String args[]) {
         TreeMap<Integer, String> map = new TreeMap();
+//        System.out.println(map.containsKey(1) ? "ок" : "не ок");
         map.put(1, "Один");
         map.put(9, "Девять");
+
         checkAndAdd(map, 0, "Zero");
         checkAndAdd(map, 3, "Три");
         checkAndAdd(map, 2, "Два");
