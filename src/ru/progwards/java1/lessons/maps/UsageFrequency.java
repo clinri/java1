@@ -1,41 +1,108 @@
 package ru.progwards.java1.lessons.maps;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class UsageFrequency {
-    static String strText = "";
-
+    ArrayList<String> strList = new ArrayList();
     //Реализовать класс, подсчитывающий частоту использования слов и букв в словах на основе текстов. Методы:
     //2.1 public void processFile(String fileName) - загрузить содержимое файла
-    public static void processFile(String fileName) {
-//        File fileInfo = new File(fileName);
-//        System.out.println("путь к файлу: " + fileInfo.getPath());
-//        System.out.println("файл существует?: " + fileInfo.exists());
-//        System.out.println("последне изменение: " + new Date(fileInfo.lastModified()));
-
+    public void processFile(String fileName) {
         try (Scanner scanner = new Scanner(new File(fileName))) {
-            while (scanner.hasNext()) {
-                strText += scanner.next() + " ";
+            String strText = "";
+            while (scanner.hasNextLine()) {
+                strText += scanner.nextLine() + " ";
+                if (strText.length() > 1000000){ // String большего размера не работал корректно
+                    strList.add(strText);
+                    strText = "";
+                }
             }
+            strList.add(strText);
+            strList.trimToSize();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    private void copyData(String[] src, String[] dst) {
+        for (int i = 0; i < src.length; i++)
+            dst[i] = src[i];
+    }
+
     //2.2 public Map<Character, Integer> getLetters() - вернуть Map, который содержит все найденные буквы и цифры,
     // и количество раз, которое встретился каждый искомый символ.
     // Знаки препинания, такие как “.,!? @” и др не учитывать.
+    public Map<Character, Integer> getLetters() {
+        HashMap<Character, Integer> hashMap = new HashMap();
+        for (String strText: strList) {
+            char[] chars = strText.toCharArray();
+            int intValue = 0;
+            for (int i = 0; i < chars.length; i++) {
+                if (!Character.isLetter(chars[i]) | !Character.isAlphabetic(chars[i])) continue;
+                if (hashMap.isEmpty()) {
+                    hashMap.put(chars[i], 1);
+                } else {
+                    if (hashMap.containsKey(chars[i])) {
+                        intValue = hashMap.get(chars[i]);
+                        hashMap.replace(chars[i], intValue + 1);
+                    } else
+                        hashMap.put(chars[i], 1);
+                }
+            }
+        }
+        return hashMap;
+    }
+
+    //2.3 public Map<String, Integer> getWords() - вернуть Map, который содержит все найденные слова
+    // и количество раз, которое каждое слово встретилось. Знаки препинания,
+    // такие как “.,!? @” и др являются разделителями.
+    public Map<String, Integer> getWords() {
+        HashMap<String, Integer> hashMap = new HashMap();
+        String[] words;
+        for (String strText: strList) {
+            words = strText.split("[.,!? @]");
+            //System.out.println(words.length);
+            int intValue = 0;
+            String strVale = "";
+
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].length() == 0) continue;
+                if (!Character.isAlphabetic(words[i].charAt(0))) continue;
+                strVale = words[i].toLowerCase();
+                if (hashMap.isEmpty()) {
+                    hashMap.put(strVale, 1);
+                } else {
+                    if (hashMap.containsKey(strVale)) {
+                        intValue = hashMap.get(strVale);
+                        hashMap.replace(strVale, intValue + 1);
+                    } else
+                        hashMap.put(strVale, 1);
+                }
+            }
+        }
+        return hashMap;
+    }
 
     public static void main(String[] args) {
-        try {
-            processFile("wiki.test.tokens");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        System.out.println(strText);
+        long start = System.currentTimeMillis();
+        UsageFrequency usageFrequency = new UsageFrequency();
+        usageFrequency.processFile("wiki.train.tokens");
+
+        //System.out.println(strText);
+//        System.out.println(strText.length());
+//        System.out.println(usageFrequency.getLetters().toString());
+        System.out.println("букв " + usageFrequency.getLetters().size());
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap = (HashMap<String, Integer>) usageFrequency.getWords();
+//        System.out.println(hashMap.toString());
+        System.out.println("слов " +hashMap.size());
+        int i = 0;
+//        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+////            System.out.println(entry);
+//            i++;
+//            //if (i>10) break;
+//        }
+
 
 //        String str = "Это строка, она большая";
 //
@@ -54,5 +121,6 @@ public class UsageFrequency {
 //        } catch (FileNotFoundException e){
 //            System.out.print(e);
 //        }
+        System.out.println("время " + (System.currentTimeMillis() - start));
     }
 }
