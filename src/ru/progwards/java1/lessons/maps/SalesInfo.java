@@ -90,7 +90,7 @@ public class SalesInfo {
 
     public static void main(String[] args) {
         SalesInfo newSales = new SalesInfo();
-        System.out.println(newSales.loadOrders("src/sales"));
+        System.out.println(newSales.loadOrders("sales"));
         System.out.println(newSales.getGoods());
         System.out.println(newSales.getCustomers());
     }
