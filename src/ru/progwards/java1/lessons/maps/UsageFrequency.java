@@ -84,38 +84,10 @@ public class UsageFrequency {
         long start = System.currentTimeMillis();
         UsageFrequency usageFrequency = new UsageFrequency();
         usageFrequency.processFile("wiki.test.tokens");
-
-        //System.out.println(strText);
-//        System.out.println(strText.length());
         System.out.println(usageFrequency.getLetters().toString());
         System.out.println("букв " + usageFrequency.getLetters().size());
         TreeMap<String, Integer> treeMap = (TreeMap<String, Integer>) usageFrequency.getWords();
         System.out.println(treeMap.toString());
         System.out.println("слов " + treeMap.size());
-        int i = 0;
-//        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
-////            System.out.println(entry);
-//            i++;
-//            //if (i>10) break;
-//        }
-
-
-//        String str = "Это строка, она большая";
-//
-//        File file = new File("E:\\bandr\\IdeaProjects\\Progwards\\wiki.test.tokens");
-//
-//        File fileInfo = new File("E:\\bandr\\IdeaProjects\\Progwards\\wiki.test.tokens");
-//        System.out.println("путь к файлу: " + fileInfo.getPath());
-//        System.out.println("файл существует?: " + fileInfo.exists());
-//        System.out.println("последне изменение: " + new Date(fileInfo.lastModified()));
-//
-//        try (Scanner scanner = new Scanner(file)) {
-//            while (scanner.hasNext()){
-//                String word = scanner.next();
-//                System.out.println("Слово: " + word);
-//            }
-//        } catch (FileNotFoundException e){
-//            System.out.print(e);
-//        }
     }
 }

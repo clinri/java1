@@ -91,46 +91,5 @@ public class FiboMapCache {
 
     public static void main(String[] args) {
         test();
-
-//        System.out.println(fiboNumber(6).toString());
-//        for (int i=1; i<15; i++) {
-//            System.out.println(fiboNumber(i).toString());
-//        }
-
-        // ===========
-
-//        boolean paramCacheBool = true;
-//        long startTime;
-//        long endTime;
-//        FiboMapCache myObj = new FiboMapCache(paramCacheBool);
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+2) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+1) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+1) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        for (Map.Entry<Integer, BigDecimal> entry: myObj.fiboCache.entrySet()) {
-//            System.out.println(entry.getKey() + " -> " + entry.getValue());
-//        }
-//        myObj.clearCahe();
-
     }
 }

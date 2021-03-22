@@ -108,6 +108,5 @@ public class SalesInfo {
         System.out.println(newSales.getGoods());
         System.out.println(newSales.getCustomers());
     }
-
 }
 
