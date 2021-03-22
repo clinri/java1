@@ -65,7 +65,7 @@ public class UsageFrequency {
             int intValue = 0;
             for (int i = 0; i < words.length; i++) {
                 if (words[i].length() == 0) continue;
-                if (!(Character.isLetter(words[i].charAt(0)) | Character.isDigit(words[i].charAt(0)))) continue;
+                //if (!(Character.isLetter(words[i].charAt(0)) | Character.isDigit(words[i].charAt(0)))) continue;
                 if (hashMap.isEmpty()) {
                     hashMap.put(words[i], 1);
                 } else {
