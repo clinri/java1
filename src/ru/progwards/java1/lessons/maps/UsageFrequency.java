@@ -61,7 +61,7 @@ public class UsageFrequency {
         Map<String, Integer> hashMap = new TreeMap();
         String[] words;
         for (String strText : strList) {
-            words = strText.split("[<>-@='\"()/!.,;:?\\- ]");
+            words = strText.split("[<>–@='\"()/!.,;:?\\- ]");
             int intValue = 0;
             for (int i = 0; i < words.length; i++) {
                 if (words[i].length() == 0) continue;
