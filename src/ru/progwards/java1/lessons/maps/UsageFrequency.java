@@ -5,6 +5,7 @@ import java.util.*;
 
 public class UsageFrequency {
     ArrayList<String> strList = new ArrayList();
+
     //Реализовать класс, подсчитывающий частоту использования слов и букв в словах на основе текстов. Методы:
     //2.1 public void processFile(String fileName) - загрузить содержимое файла
     public void processFile(String fileName) {
@@ -12,7 +13,7 @@ public class UsageFrequency {
             String strText = "";
             while (scanner.hasNextLine()) {
                 strText += scanner.nextLine() + " ";
-                if (strText.length() > 1000000){ // String большего размера не работал корректно
+                if (strText.length() > 1000000) { // String большего размера не работал корректно
                     strList.add(strText);
                     strText = "";
                 }
@@ -33,12 +34,12 @@ public class UsageFrequency {
     // и количество раз, которое встретился каждый искомый символ.
     // Знаки препинания, такие как “.,!? @” и др не учитывать.
     public Map<Character, Integer> getLetters() {
-        HashMap<Character, Integer> hashMap = new HashMap();
-        for (String strText: strList) {
+        Map<Character, Integer> hashMap = new TreeMap();
+        for (String strText : strList) {
             char[] chars = strText.toCharArray();
             int intValue = 0;
             for (int i = 0; i < chars.length; i++) {
-                if (!Character.isLetter(chars[i]) | !Character.isAlphabetic(chars[i])) continue;
+                if (!(Character.isDigit(chars[i]) | Character.isLetter(chars[i]))) continue;
                 if (hashMap.isEmpty()) {
                     hashMap.put(chars[i], 1);
                 } else {
@@ -57,26 +58,22 @@ public class UsageFrequency {
     // и количество раз, которое каждое слово встретилось. Знаки препинания,
     // такие как “.,!? @” и др являются разделителями.
     public Map<String, Integer> getWords() {
-        HashMap<String, Integer> hashMap = new HashMap();
+        Map<String, Integer> hashMap = new TreeMap();
         String[] words;
-        for (String strText: strList) {
-            words = strText.split("[.,!? @]");
-            //System.out.println(words.length);
+        for (String strText : strList) {
+            words = strText.split("[<>–@='\"()/!.,;:?\\- ]");
             int intValue = 0;
-            String strVale = "";
-
             for (int i = 0; i < words.length; i++) {
                 if (words[i].length() == 0) continue;
-                if (!Character.isAlphabetic(words[i].charAt(0))) continue;
-                strVale = words[i].toLowerCase();
+                //if (!(Character.isLetter(words[i].charAt(0)) | Character.isDigit(words[i].charAt(0)))) continue;
                 if (hashMap.isEmpty()) {
-                    hashMap.put(strVale, 1);
+                    hashMap.put(words[i], 1);
                 } else {
-                    if (hashMap.containsKey(strVale)) {
-                        intValue = hashMap.get(strVale);
-                        hashMap.replace(strVale, intValue + 1);
+                    if (hashMap.containsKey(words[i])) {
+                        intValue = hashMap.get(words[i]);
+                        hashMap.replace(words[i], intValue + 1);
                     } else
-                        hashMap.put(strVale, 1);
+                        hashMap.put(words[i], 1);
                 }
             }
         }
@@ -86,41 +83,11 @@ public class UsageFrequency {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         UsageFrequency usageFrequency = new UsageFrequency();
-        usageFrequency.processFile("wiki.train.tokens");
-
-        //System.out.println(strText);
-//        System.out.println(strText.length());
-//        System.out.println(usageFrequency.getLetters().toString());
+        usageFrequency.processFile("wiki.test.tokens");
+        System.out.println(usageFrequency.getLetters().toString());
         System.out.println("букв " + usageFrequency.getLetters().size());
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap = (HashMap<String, Integer>) usageFrequency.getWords();
-//        System.out.println(hashMap.toString());
-        System.out.println("слов " +hashMap.size());
-        int i = 0;
-//        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
-////            System.out.println(entry);
-//            i++;
-//            //if (i>10) break;
-//        }
-
-
-//        String str = "Это строка, она большая";
-//
-//        File file = new File("E:\\bandr\\IdeaProjects\\Progwards\\wiki.test.tokens");
-//
-//        File fileInfo = new File("E:\\bandr\\IdeaProjects\\Progwards\\wiki.test.tokens");
-//        System.out.println("путь к файлу: " + fileInfo.getPath());
-//        System.out.println("файл существует?: " + fileInfo.exists());
-//        System.out.println("последне изменение: " + new Date(fileInfo.lastModified()));
-//
-//        try (Scanner scanner = new Scanner(file)) {
-//            while (scanner.hasNext()){
-//                String word = scanner.next();
-//                System.out.println("Слово: " + word);
-//            }
-//        } catch (FileNotFoundException e){
-//            System.out.print(e);
-//        }
-        System.out.println("время " + (System.currentTimeMillis() - start));
+        TreeMap<String, Integer> treeMap = (TreeMap<String, Integer>) usageFrequency.getWords();
+        System.out.println(treeMap.toString());
+        System.out.println("слов " + treeMap.size());
     }
 }

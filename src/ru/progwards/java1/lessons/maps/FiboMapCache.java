@@ -1,10 +1,7 @@
 package ru.progwards.java1.lessons.maps;
 
-import ru.progwards.java1.lessons.queues.CollectionsSort;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class FiboMapCache {
@@ -30,8 +27,9 @@ public class FiboMapCache {
     // и если да - вернуть его из кэша, если нет - рассчитать и добавить в кэш. Учитывать значение переменной cacheOn
     public BigDecimal fiboNumber(int n) {
         // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
-        if (this.cacheOn & !this.fiboCache.isEmpty() & this.fiboCache.containsKey(n))
-            return this.fiboCache.get(n);
+        if (this.cacheOn & this.fiboCache != null)
+            if (this.fiboCache.containsKey(n))
+                return this.fiboCache.get(n);
         BigDecimal fibo = new BigDecimal("0");
         BigDecimal onePastDigit = new BigDecimal("0");
         BigDecimal twoPastDigit = new BigDecimal("0");
@@ -51,12 +49,17 @@ public class FiboMapCache {
             }
         }
         if (this.cacheOn)
-            this.fiboCache.put(n,fibo);
+            if (this.fiboCache != null)
+                this.fiboCache.put(n, fibo);
+            else {
+                this.fiboCache = new HashMap<>();
+                this.fiboCache.put(n, fibo);
+            }
         return fibo;
     }
 
     //1.4 Реализовать метод public void clearCahe() который устанавливает переменную fiboCache в null
-    public void clearCahe(){
+    public void clearCahe() {
         this.fiboCache = null;
     }
 
@@ -64,13 +67,13 @@ public class FiboMapCache {
     // от n = 1 до 1000 включительно и замерить разницу во времени с on = true и on = false, результат
     // вывести на экран в формате "fiboNumber cacheOn=??? время выполнения ???" для cacheOn=true и cacheOn=false,
     // вместо ??? вывести реальные значения в мсек.
-    public static void test(){
+    public static void test() {
         long startTime;
         long endTime;
         boolean paramCacheBool = true;
         FiboMapCache myObj = new FiboMapCache(paramCacheBool);
         startTime = System.currentTimeMillis();
-        for (int i =0; i<1000; i=i+2) {
+        for (int i = 0; i < 1000; i = i + 2) {
             myObj.fiboNumber(i);
         }
         endTime = System.currentTimeMillis();
@@ -79,7 +82,7 @@ public class FiboMapCache {
         paramCacheBool = false;
         myObj = new FiboMapCache(paramCacheBool);
         startTime = System.currentTimeMillis();
-        for (int i =0; i<1000; i=i+2) {
+        for (int i = 0; i < 1000; i = i + 2) {
             myObj.fiboNumber(i);
         }
         endTime = System.currentTimeMillis();
@@ -88,46 +91,5 @@ public class FiboMapCache {
 
     public static void main(String[] args) {
         test();
-
-//        System.out.println(fiboNumber(6).toString());
-//        for (int i=1; i<15; i++) {
-//            System.out.println(fiboNumber(i).toString());
-//        }
-
-        // ===========
-
-//        boolean paramCacheBool = true;
-//        long startTime;
-//        long endTime;
-//        FiboMapCache myObj = new FiboMapCache(paramCacheBool);
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+2) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+1) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        startTime = System.currentTimeMillis();
-//        for (int i =0; i<100; i=i+1) {
-//            //System.out.println(myObj.fiboNumber(i).toString());
-//            myObj.fiboNumber(i);
-//        }
-//        endTime = System.currentTimeMillis();
-//        System.out.println(endTime - startTime);
-//
-//        for (Map.Entry<Integer, BigDecimal> entry: myObj.fiboCache.entrySet()) {
-//            System.out.println(entry.getKey() + " -> " + entry.getValue());
-//        }
-//        myObj.clearCahe();
-
     }
 }
