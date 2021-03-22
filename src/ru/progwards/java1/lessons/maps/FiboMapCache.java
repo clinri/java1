@@ -49,7 +49,12 @@ public class FiboMapCache {
             }
         }
         if (this.cacheOn)
-            this.fiboCache.put(n, fibo);
+            if (this.fiboCache != null)
+                this.fiboCache.put(n, fibo);
+            else {
+                this.fiboCache = new HashMap<>();
+                this.fiboCache.put(n, fibo);
+            }
         return fibo;
     }
 

@@ -93,10 +93,10 @@ public class SalesInfo {
         for (SalesInfo sales : listSales) {
             if (sortSales.containsKey(sales.fio)){
                 sumFio = sortSales.get(sales.fio).getKey()+sales.sum;
-                numSales = sortSales.get(sales.fio).getValue()+1;
+                numSales = sortSales.get(sales.fio).getValue()+sales.volume;
                 sortSales.put(sales.fio,new AbstractMap.SimpleEntry<>(sumFio,numSales));
             } else{
-                sortSales.put(sales.fio,new AbstractMap.SimpleEntry(sales.sum,1));
+                sortSales.put(sales.fio,new AbstractMap.SimpleEntry(sales.sum,sales.volume));
             }
         }
         return sortSales;
