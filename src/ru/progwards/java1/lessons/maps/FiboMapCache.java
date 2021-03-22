@@ -1,10 +1,7 @@
 package ru.progwards.java1.lessons.maps;
 
-import ru.progwards.java1.lessons.queues.CollectionsSort;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class FiboMapCache {

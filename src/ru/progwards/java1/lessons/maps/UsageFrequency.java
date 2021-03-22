@@ -121,6 +121,5 @@ public class UsageFrequency {
 //        } catch (FileNotFoundException e){
 //            System.out.print(e);
 //        }
-        System.out.println("время " + (System.currentTimeMillis() - start));
     }
 }
