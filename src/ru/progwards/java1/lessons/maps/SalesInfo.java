@@ -52,13 +52,14 @@ public class SalesInfo {
         List<String> vals;
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNextLine()) {
-                vals = Arrays.asList(scanner.nextLine().split(","));
+                vals = Arrays.asList(scanner.nextLine().split(", "));
                 if (vals.size() == 4)
-                    listSales.add(new SalesInfo(
-                            vals.get(0),
-                            vals.get(1),
-                            Integer.parseInt(vals.get(2).replace(" ","")),
-                            Double.parseDouble(vals.get(3).replace(" ",""))));
+                    if (Character.isDigit(vals.get(2).charAt(0)) & Character.isDigit(vals.get(3).charAt(0)))
+                        listSales.add(new SalesInfo(
+                                vals.get(0),
+                                vals.get(1),
+                                Integer.parseInt(vals.get(2)),
+                                Double.parseDouble(vals.get(3))));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -71,8 +72,13 @@ public class SalesInfo {
     // отсортированный по наименованию товара. В String - наименование товара, в Double - общая сумма продаж по товару
     public Map<String, Double> getGoods() {
         Map<String, Double> sortSales = new TreeMap<>();
+        Double sumProd = 0d;
         for (SalesInfo sales : listSales) {
-            sortSales.put(sales.product, sales.sum);
+            if (sortSales.containsKey(sales.product)) {
+                sumProd = sortSales.get(sales.product) + sales.sum;
+                sortSales.put(sales.product, sumProd);
+            } else
+                sortSales.put(sales.product, sales.sum);
         }
         return sortSales;
     }
@@ -82,8 +88,16 @@ public class SalesInfo {
     // в Integer - количество покупок
     public Map<String, AbstractMap.SimpleEntry<Double, Integer>> getCustomers() {
         Map<String, AbstractMap.SimpleEntry<Double, Integer>> sortSales = new TreeMap<>();
+        Double sumFio = 0d;
+        Integer numSales = 0;
         for (SalesInfo sales : listSales) {
-            sortSales.put(sales.fio, new AbstractMap.SimpleEntry<>(sales.sum, sales.volume));
+            if (sortSales.containsKey(sales.fio)){
+                sumFio = sortSales.get(sales.fio).getKey()+sales.sum;
+                numSales = sortSales.get(sales.fio).getValue()+1;
+                sortSales.put(sales.fio,new AbstractMap.SimpleEntry<>(sumFio,numSales));
+            } else{
+                sortSales.put(sales.fio,new AbstractMap.SimpleEntry(sales.sum,1));
+            }
         }
         return sortSales;
     }

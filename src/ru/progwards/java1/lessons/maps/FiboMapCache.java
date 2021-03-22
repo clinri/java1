@@ -1,10 +1,7 @@
 package ru.progwards.java1.lessons.maps;
 
-import ru.progwards.java1.lessons.queues.CollectionsSort;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class FiboMapCache {
@@ -30,7 +27,7 @@ public class FiboMapCache {
     // и если да - вернуть его из кэша, если нет - рассчитать и добавить в кэш. Учитывать значение переменной cacheOn
     public BigDecimal fiboNumber(int n) {
         // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
-        if (this.cacheOn & !this.fiboCache.isEmpty() & this.fiboCache.containsKey(n))
+        if (this.cacheOn & this.fiboCache != null & !this.fiboCache.isEmpty() & this.fiboCache.containsKey(n))
             return this.fiboCache.get(n);
         BigDecimal fibo = new BigDecimal("0");
         BigDecimal onePastDigit = new BigDecimal("0");
