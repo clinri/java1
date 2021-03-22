@@ -27,8 +27,9 @@ public class FiboMapCache {
     // и если да - вернуть его из кэша, если нет - рассчитать и добавить в кэш. Учитывать значение переменной cacheOn
     public BigDecimal fiboNumber(int n) {
         // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
-        if (this.cacheOn & this.fiboCache != null & !this.fiboCache.isEmpty() & this.fiboCache.containsKey(n))
-            return this.fiboCache.get(n);
+        if (this.cacheOn & !this.fiboCache.isEmpty())
+            if (this.fiboCache.containsKey(n))
+                return this.fiboCache.get(n);
         BigDecimal fibo = new BigDecimal("0");
         BigDecimal onePastDigit = new BigDecimal("0");
         BigDecimal twoPastDigit = new BigDecimal("0");
@@ -48,12 +49,12 @@ public class FiboMapCache {
             }
         }
         if (this.cacheOn)
-            this.fiboCache.put(n,fibo);
+            this.fiboCache.put(n, fibo);
         return fibo;
     }
 
     //1.4 Реализовать метод public void clearCahe() который устанавливает переменную fiboCache в null
-    public void clearCahe(){
+    public void clearCahe() {
         this.fiboCache = null;
     }
 
@@ -61,13 +62,13 @@ public class FiboMapCache {
     // от n = 1 до 1000 включительно и замерить разницу во времени с on = true и on = false, результат
     // вывести на экран в формате "fiboNumber cacheOn=??? время выполнения ???" для cacheOn=true и cacheOn=false,
     // вместо ??? вывести реальные значения в мсек.
-    public static void test(){
+    public static void test() {
         long startTime;
         long endTime;
         boolean paramCacheBool = true;
         FiboMapCache myObj = new FiboMapCache(paramCacheBool);
         startTime = System.currentTimeMillis();
-        for (int i =0; i<1000; i=i+2) {
+        for (int i = 0; i < 1000; i = i + 2) {
             myObj.fiboNumber(i);
         }
         endTime = System.currentTimeMillis();
@@ -76,7 +77,7 @@ public class FiboMapCache {
         paramCacheBool = false;
         myObj = new FiboMapCache(paramCacheBool);
         startTime = System.currentTimeMillis();
-        for (int i =0; i<1000; i=i+2) {
+        for (int i = 0; i < 1000; i = i + 2) {
             myObj.fiboNumber(i);
         }
         endTime = System.currentTimeMillis();

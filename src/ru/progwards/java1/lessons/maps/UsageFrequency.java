@@ -34,7 +34,7 @@ public class UsageFrequency {
     // и количество раз, которое встретился каждый искомый символ.
     // Знаки препинания, такие как “.,!? @” и др не учитывать.
     public Map<Character, Integer> getLetters() {
-        HashMap<Character, Integer> hashMap = new HashMap();
+        Map<Character, Integer> hashMap = new TreeMap();
         for (String strText : strList) {
             char[] chars = strText.toCharArray();
             int intValue = 0;
@@ -58,7 +58,7 @@ public class UsageFrequency {
     // и количество раз, которое каждое слово встретилось. Знаки препинания,
     // такие как “.,!? @” и др являются разделителями.
     public Map<String, Integer> getWords() {
-        HashMap<String, Integer> hashMap = new HashMap();
+        Map<String, Integer> hashMap = new TreeMap();
         String[] words;
         for (String strText : strList) {
             words = strText.split("[.,!? @]");
@@ -89,9 +89,9 @@ public class UsageFrequency {
 //        System.out.println(strText.length());
         System.out.println(usageFrequency.getLetters().toString());
         System.out.println("букв " + usageFrequency.getLetters().size());
-        HashMap<String, Integer> hashMap = (HashMap<String, Integer>) usageFrequency.getWords();
-        System.out.println(hashMap.toString());
-        System.out.println("слов " + hashMap.size());
+        TreeMap<String, Integer> treeMap = (TreeMap<String, Integer>) usageFrequency.getWords();
+        System.out.println(treeMap.toString());
+        System.out.println("слов " + treeMap.size());
         int i = 0;
 //        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
 ////            System.out.println(entry);
