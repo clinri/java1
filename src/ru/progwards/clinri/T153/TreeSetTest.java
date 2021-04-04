@@ -12,7 +12,6 @@ public class TreeSetTest {
             if (!map.isEmpty()){
                 if (!map.containsKey(key) & key < map.lastKey() & key > map.firstKey()) map.put(key, value);
             }
-
         }
 
     public static void main(String args[]) {
