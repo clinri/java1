@@ -1,5 +1,12 @@
 package ru.progwards.java1.lessons.datetime;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+
 public class Insurance {
     //Задача 1. Класс Insurance
     //
@@ -8,12 +15,17 @@ public class Insurance {
     //
     //
     //1.1  Реализовать локальный public static enum FormatStyle {SHORT, LONG, FULL} - стиль формата даты-времени
-
+    public static enum FormatStyle {
+        SHORT, //'2011-12-03'
+        LONG, //'2011-12-03T10:15:30'
+        FULL //'2011-12-03T10:15:30+01:00[Europe/Paris]'
+    }
 
     //1.2. Реализовать приватные свойства класса:
     //private ZonedDateTime start - дата-время начала действия страховки.
     //private Duration duration - продолжительность действия.
-
+    private ZonedDateTime start;
+    private Duration duration;
 
     //1.2 Реализовать конструкторы:
     //
@@ -25,6 +37,26 @@ public class Insurance {
     //FULL - ISO_ZONED_DATE_TIME
     //Для вариантов, когда не задан явно часовой пояс использовать таковой по умолчанию.
 
+    public Insurance(ZonedDateTime start){
+        this.start = start;
+    }
+
+    public Insurance(String strStart, FormatStyle style){
+        DateTimeFormatter dtf;
+        ZoneId zoneId;
+        switch (style){
+            case SHORT -> dtf = DateTimeFormatter.ISO_LOCAL_DATE;
+            case LONG -> dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            case FULL -> dtf = DateTimeFormatter.ISO_ZONED_DATE_TIME;
+            default -> throw new IllegalStateException("Unexpected value: " + style);
+        }
+        TemporalAccessor ta = dtf.parse(strStart);
+        if (style == FormatStyle.FULL)
+            zoneId= ZoneId.from(ta);
+        else
+            zoneId = ZoneId.systemDefault();
+        start = Instant.from(ta).atZone(zoneId);
+    }
 
     //1.3 Реализовать методы, устанавливающие продолжительность действия страховки:
     //
@@ -38,6 +70,10 @@ public class Insurance {
     //SHORT - целое число миллисекунд (тип long)
     //LONG  - ISO_LOCAL_DATE_TIME - как период, например “0000-06-03T10:00:00” означает, что продолжительность действия страховки 0 лет, 6 месяцев, 3 дня 10 часов.
     //FULL - стандартный формат Duration, который получается через toString()
+
+    public void setDuration(Duration duration){ // todo установить продолжительность действия страховки
+
+    }
 
 
     //1.4 Реализовать методы возврата информации:

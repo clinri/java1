@@ -173,7 +173,7 @@ public class SeaBattleAlgErr {
 
             }
         }
-        return 0; // TODO исправить ошибку
+        return 0;
     }
 
 
